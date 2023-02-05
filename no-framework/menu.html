@@ -17,6 +17,7 @@
 
         .instructions-heading {
             font-size: 20px;
+            font-weight: bold;
         }
         .instructions-div {
             font-family: Arial;
@@ -53,28 +54,47 @@
             padding-left: 18px;
             padding-right: 18px;
         }
+
+        .top-menu {
+            background-color: green;
+            border-bottom: 20px;
+            border-top: none;
+            height: 20px;
+            border-width: 1px;
+            border-style: solid; 
+            display: flex;
+            flex-direction: row;
+            justify-content: start;
+        }
     </style>
     </head>
     <body>
-        <div class="instructions-div">
-            <p class="instructions-heading">
-                <strong>Instruction</strong><br>
-            </p>
-            <p class="instructions-text">
-                Recreate this page using <strong>only CSS</strong>. Do yourself a favor and 1) Do not view the source. 
-                Figure it out yourself. 2) Do not search for the solution. 
-                Learn CSS until you know enough to do this. <br>
-            </p>
+        <div class="top-menu">
+            <div class="menu-bar">
+                file
+            </div>
         </div>
-        <div class="extra-credit-div">
-            <p class="extra-credit-heading">
-                Extra Credit<br>
-            </p>
-            <p class="extra-credit-text">
-                Notice how the Edit menu (besides for not being bold) reacts to clicks. 
-                If you click the edit menu, it remains open until you click somewhere else. 
-                (This you might need to search for)
-            </p>
+        <div>
+            <div class="instructions-div">
+                <p class="instructions-heading">
+                    Instructions
+                </p>
+                <p class="instructions-text">
+                    Recreate this page using <strong>only CSS</strong>. Do yourself a favor and 1) Do not view the source. 
+                    Figure it out yourself. 2) Do not search for the solution. 
+                    Learn CSS until you know enough to do this. <br>
+                </p>
+            </div>
+            <div class="extra-credit-div">
+                <p class="extra-credit-heading">
+                    Extra Credit<br>
+                </p>
+                <p class="extra-credit-text">
+                    Notice how the Edit menu (besides for not being bold) reacts to clicks. 
+                    If you click the edit menu, it remains open until you click somewhere else. 
+                    (This you might need to search for)
+                </p>
+            </div>
         </div>
     </body>
 </html>
