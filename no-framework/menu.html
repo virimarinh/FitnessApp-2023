@@ -4,40 +4,62 @@
     <head>
         <title>Menu Example</title>
     <style>
+        
         body{
+            font-family: Arial, Helvetica, sans-serif;
             background-color: rgb(216, 250, 216);
             margin: 0;
+            padding: 0;
         }
 
-        p {
-            font-family: Arial;
-            margin-top: 0;
-            margin-bottom: 0;
-             padding-top: 10px;
-         }
-
-         .header {
+        .header {
              background-color: rgb(56, 163, 56);
-             margin-bottom: 20px;
+
              display: flex;
              flex-direction: row;
          }
-         
-         .options{
-             display: block;
-         }
 
-         .label{
+        .menu:hover, 
+        .menu:focus-within{
+            background-color: rgb(56, 163, 56);
+            position: relative;
+        }
+        .label{
              font-family: Arial;
              font-weight: bold;
              margin: 0;
+             display: block;
+             padding: 5px 10px;
+             min-width: 100px;
+             font-size: large;
+         }
+
+        .options{
+             display: none;
+             flex-direction: column;
+             position: absolute;
+             background-color: rgb(56, 163, 56);
+             width: 100%;
+         }
+
+         nav > div:hover > div, nav > div:focus-within > div {
+            display: flex;
+         }
+
+         nav a{
+             display: block;
+             padding: 5px 10px;
+             text-decoration: none;
+         }
+         nav a:hover{
+             background-color: rgb(56, 163, 56);
          }
 
          .heading {
              font-size: 20px;
              font-weight: bold;
         }
-
+        
         .instructions-div {
             font-family: Arial;
             font-size: 16px;
@@ -47,13 +69,10 @@
             border-color: white;
             border-left-color: green;
             background-color: white;
-            margin-left: 35px;
-            margin-right: 35px;
+            margin: 25px;
             text-align: left;
-            padding-top: 18px;
-            padding-bottom: 18px;
-            padding-left: 18px;
-            padding-right: 18px;
+            padding: 15px; 
+            
         }
         .extra-credit-div {
             font-family: Arial;
@@ -63,55 +82,59 @@
             border-color: white;
             border-left-color: yellow;
             background-color: white;
-            margin-left: 35px;
-            margin-right: 35px;
+            margin: 25px;
             text-align: left;
-            padding-top: 18px;
-            padding-bottom: 18px;
-            padding-left: 18px;
-            padding-right: 18px;
+            padding: 15px; 
         }
+        p {
+            font-family: Arial;
+            margin-top: 0;
+            margin-bottom: 0;
+             padding-top: 10px;
+         }
     </style>
     </head>
     <body>
-        <div class="header">
-             <div class="file-tap">
-                 <label class="label">File</label>
-                 <div>
-                     <a class="options" href>New</a>
-                     <a class="options" href>Open</a>
-                     <a class="options" href>Save</a>
-                     <a class="options" href>Print</a>
-                     <a class="options" href>Close</a>
+        <nav class="header">
+             <div class="menu">
+                 <h2 class="label">File</h2>
+                 <div class="options">
+                     <a href="">New</a>
+                     <a href="">Open</a>
+                     <a href="">Save</a>
+                     <a href="">Print</a>
+                     <a href="">Close</a>
                  </div>
              </div>
-             <div class="edit-tap">
-                 <p>Edit</p>
-                 <div>
-                     <a class="options" href>Undo</a>
-                     <a class="options" href>Redo</a>
-                     <a class="options" href>Cut</a>
-                     <a class="options" href>Copy</a>
-                     <a class="options" href>Paste</a>
-                     <a class="options" href>Delete</a>
-                     <a class="options" href>Select All</a>
+             <div class="menu">
+                 <label class="label">
+                    Edit
+                </label>
+                 <div class="options">
+                     <a href="">Undo</a>
+                     <a href="">Redo</a>
+                     <a href="">Cut</a>
+                     <a href="">Copy</a>
+                     <a href="">Paste</a>
+                     <a href="">Delete</a>
+                     <a href="">Select All</a>
                  </div>
              </div>
-             <div class="view-tap">
+             <div class="menu">
                  <label class="label">View</label>
-                 <div>
-                     <a class="options" href>Zoom In</a>
-                     <a class="options" href>Zoom Out</a>
-                     <a class="options" href>Actual Size</a>
-                     <a class="options" href>Fit Page</a>
-                     <a class="options" href>Fit Width</a>
-                     <a class="options" href>Fit Height</a>
-                     <a class="options" href>Rotate Left</a>
-                     <a class="options" href>Rotate Right</a>
-                     <a class="options" href>Full Screen</a>
+                 <div class="options">
+                     <a href="">Zoom In</a>
+                     <a href="">Zoom Out</a>
+                     <a href="">Actual Size</a>
+                     <a href="">Fit Page</a>
+                     <a href="">Fit Width</a>
+                     <a href="">Fit Height</a>
+                     <a href="">Rotate Left</a>
+                     <a href="">Rotate Right</a>
+                     <a href="">Full Screen</a>
                  </div>
              </div>
-         </div>
+            </nav>
         <div>
             <div class="instructions-div">
                 <p class="heading">
