@@ -1,0 +1,27 @@
+
+{
+    "name": "web-devprojects-spring2023", 
+    "version": "1.0.0",
+    "description": "",
+    "license": "BSD",
+    "repository": { 
+      "type": "git",
+      "url": "git+https://github.com/virimarinh/WebDevProjects-2023.git"
+    },
+    "private": true,
+  
+    "scripts": {
+      "start": "node server/index.js", 
+      "dev": "nodemon server/index.js --watch server"
+  },
+
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+
+
+  
+  }
