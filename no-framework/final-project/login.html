@@ -6,105 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <script src="https://kit.fontawesome.com/c2322fb198.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
 </head>
 <style>
-    *{
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-    }
-
     body{
         display: grid;
         height: 100vh;
         width: 100%;
-        
-        background-color: blueviolet;
-        background-image: linear-gradient(to right,rgb(122, 216, 254),rgb(243, 198, 243));
-    }
-
-    .container {
-        
-        background-color: whitesmoke;
-        padding: 60px;
-    }
-
-    
-    .header {
-        background-image: linear-gradient(to right,rgb(122, 216, 254),rgb(243, 198, 243));
-        width: 100%;
-        height: 100px;
-        display: flex;
-        flex-direction: row;
-         }
-
-    .header {
-        background-image: linear-gradient(to right,rgb(122, 216, 254),rgb(243, 198, 243));
-        width: 100%;
-        height: 100px;
-
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-    }
-
-
-    .left-section {
-        background-color: white;
-        display: flex;
-        flex: 1;
         align-items: center;
     }
 
-    .app-logo {
-        height: 90px;
-    }  
-
-    .name {
-        margin-left: 10px;
-        color: auto;
-        font-weight: bold;
-    }
-
-    .section {
-        background-color: aqua;
-        margin-top: 30px;
-        height: 70px;
-        border-width: 1px;
-        border-style: solid;
-        border-color: gray;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-    }
-    .middle-section {
-        background-color: lightpink;
-        width: 100px;
-    }
-
-    .right-section {
-        background-color: lightblue;
-        flex: 2;
+    .container {
+        border-radius: 10px;
     }
 </style>
 <body>
-    <nav class="header">
-        <div class="left-section">
-            <img class="app-logo" src="/no-framework/final-project/icons/appIcon.png">
-            <p class="name">WorkOutApp</p>
+    <div class="container"><form class="box">
+        <div class="field">
+          <label class="label">Email</label>
+          <div class="control">
+            <input class="input" type="email" placeholder="e.g. alex@example.com">
+          </div>
         </div>
-        <div class="middle-section">
-            <p> white </p>
+      
+        <div class="field">
+          <label class="label">Password</label>
+          <div class="control">
+            <input class="input" type="password" placeholder="********">
+          </div>
         </div>
-        <div class="right-section">
-            <p> right </p>
-        </div>
-    </div>
-    <div class="section">
-        <div class="container">
-
-        </div>
-    </div>
+      
+        <button class="button is-primary">Sign in</button>
+      </form>
 </body>
 </html>
