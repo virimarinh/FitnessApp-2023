@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
+import LoginBadge from './LoginBadge.vue';
     const isMenuActive = false;
 </script>
 
@@ -7,7 +8,7 @@ import { RouterLink } from 'vue-router';
     <nav class="navbar is-danger">
         <div class="container">
         <div class="navbar-brand">
-          <a class="navbar-item" href="https://bulma.io">
+          <a class="navbar-item" href="">
             
             <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="22" height="22" />
           </a>
@@ -21,7 +22,7 @@ import { RouterLink } from 'vue-router';
         <div class="navbar-menu" :class="{ 'is-active': isMenuActive }">
           <div class="navbar-start">
 
-            <RouterLink to="/" class="navbar-item">
+            <RouterLink to="/activity" class="navbar-item">
               <i class="fa-solid fa-person-walking"></i>
                My Activity
             </RouterLink>
@@ -36,33 +37,22 @@ import { RouterLink } from 'vue-router';
 
 
             <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link" href="https://bulma.io/documentation/overview/start/">
+              <a class="navbar-link" href="">
                 Admin
               </a>
               <div class="navbar-dropdown">
-                <a class="navbar-item" href="https://bulma.io/documentation/overview/start/">
+                <a class="navbar-item" href="">
                   Users
                 </a>
               </div>
             </div>
           </div>
-      
+
           <div class="navbar-end">
+            <LoginBadge />
+            
             <div class="navbar-item">
               <div class="field is-grouped">
-                <p class="control">
-                  <a class="button is-danger" href="">
-                    <span>Sign Up</span>
-                  </a>
-                </p>
-                <p class="control">
-                  <a class="button" href="">
-                    <span>Login</span>
-                    <span class="icon is-small">
-                      <i class="fas fa-angle-down" aria-hidden="true"></i>
-                    </span>
-                  </a>
-                </p>
                 <p class="control">
                   <a class="bd-tw-button button" data-social-network="Twitter" data-social-action="tweet" data-social-target="https://bulma.io" target="_blank" href="https://twitter.com/intent/tweet?text=Bulma: a modern CSS framework based on Flexbox&amp;hashtags=bulmaio&amp;url=https://bulma.io&amp;via=jgthms">
                     <span class="icon">
