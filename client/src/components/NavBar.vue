@@ -26,15 +26,18 @@ import LoginBadge from './LoginBadge.vue';
               <i class="fa-solid fa-person-walking"></i>
                My Activity
             </RouterLink>
-            <RouterLink to="/about" class="navbar-item">
+            <RouterLink to="/statistics" class="navbar-item">
               <i class="fa-light fa-chart-line"></i>
               Statistics
             </RouterLink>
-            <RouterLink to="/about" class="navbar-item">
+            <RouterLink to="" class="navbar-item">
               <i class="fa-solid fa-users"></i>
               Friends Activity
             </RouterLink>
-
+            <RouterLink to="/about" class="navbar-item">
+              <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+              People Search
+            </RouterLink>
 
             <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link" href="">
