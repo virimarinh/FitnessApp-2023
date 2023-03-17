@@ -3,7 +3,8 @@ import LoginVue from '@/views/Login.vue'
 import { useSession } from '@/model/session'
 import ActivityView from '../views/ActivityView.vue'
 import StatisticsVue from '../views/Statistics.vue'
-import FriendsActivity from '../views/FriendsActivity'
+import FriendsActivity from '../views/FriendsActivity.vue'
+import PeopleSearch from '@/views/PeopleSearch.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -11,6 +12,7 @@ const router = createRouter({
     { path: '/activity', name: 'activity', component: ActivityView},
     { path: '/login', name: 'login', component: LoginVue},
     { path: '/friends-activity', name: 'friends-activity', component: FriendsActivity},
+    { path: '/people-search', name: 'people-search', component: PeopleSearch},
     {
       path: '/statistics',
       name: 'statistics',

@@ -30,11 +30,11 @@ import LoginBadge from './LoginBadge.vue';
               <i class="fa-light fa-chart-line"></i>
               Statistics
             </RouterLink>
-            <RouterLink to="" class="navbar-item">
+            <RouterLink to="/friends-activity" class="navbar-item">
               <i class="fa-solid fa-users"></i>
               Friends Activity
             </RouterLink>
-            <RouterLink to="/about" class="navbar-item">
+            <RouterLink to="/people-search" class="navbar-item">
               <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
               People Search
             </RouterLink>

@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import { ref } from 'vue'
+
+</script>
 <template>
   <div class="about">
     <h1 class="title">Extra Credit</h1>
