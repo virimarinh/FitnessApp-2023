@@ -44,9 +44,9 @@ import LoginBadge from './LoginBadge.vue';
                 Admin
               </a>
               <div class="navbar-dropdown">
-                <a class="navbar-item" href="">
-                  Users
-                </a>
+                <RouterLink to="/users" class="navbar-item">
+                  User
+                </RouterLink>
               </div>
             </div>
           </div>
