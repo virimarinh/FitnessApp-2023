@@ -23,12 +23,37 @@ function logout2() {
             </span>
             <strong>Sign up</strong>
         </a>
-        <a class="button" @click="login">
+        <div class="dropdown is-active">
+  <div class="dropdown-trigger">
+    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu2">
+      <span>Login</span>
+      <span class="icon is-small">
+        <i class="fas fa-angle-down" aria-hidden="true"></i>
+      </span>
+    </button>
+  </div>
+  <div class="dropdown-menu" id="dropdown-menu2" role="menu">
+    <div class="dropdown-content">
+      <div class="dropdown-item" @click="login">
+        Viridiana Marin
+      </div>
+      <hr class="dropdown-divider">
+      <div class="dropdown-item">
+        <p>You simply need to use a <code>&lt;div&gt;</code> instead.</p>
+      </div>
+      <hr class="dropdown-divider">
+      <a href="/login" class="dropdown-item">
+        Other Account
+      </a>
+    </div>
+  </div>
+</div>
+        <!-- <a class="button" @click="login">
             <span>Login</span>
             <span class="icon">
                 <i class="fas fa-angle-down" aria-hidden="true"></i>
             </span>
-        </a>
+        </a> -->
     </div>
 </template>
 

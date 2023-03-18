@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
 import LoginBadge from './LoginBadge.vue';
-    const isMenuActive = false;
+   
 </script>
 
 <template>
@@ -9,17 +9,18 @@ import LoginBadge from './LoginBadge.vue';
         <div class="container">
         <div class="navbar-brand">
           <a class="navbar-item" href="">
-            
-            <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="22" height="22" />
+            <RouterLink to="/"> 
+              <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="22" height="22" />
+            </RouterLink>
           </a>
-          <div class="navbar-burger" :class="{ 'is-active': isMenuActive }" @click="isMenuActive = !isMenuActive" >
+          <div class="navbar-burger" >
             <span></span>
             <span></span>
             <span></span>
           </div>
         </div>
       
-        <div class="navbar-menu" :class="{ 'is-active': isMenuActive }">
+        <div class="navbar-menu">
           <div class="navbar-start">
 
             <RouterLink to="/activity" class="navbar-item">

@@ -7,10 +7,14 @@ const session = reactive({
 
 interface User {
     id?: number;
-    name: string;
+    name: string,
+    firstName: string;
+    lastName: string;
     email?:string;
-    photo?: SVGFESpecularLightingElement;
+    photo?: String;
     token?: string;
+    admin: Boolean;
+    handle?: string;
 }
 
 export function useSession() {
@@ -19,7 +23,12 @@ export function useSession() {
 
 export function login() {
     session.user = {
-        name: "Viri Marin",
+        name: "Viridiana Marin",
+        firstName: "Viridiana",
+        lastName: "Marin",
+        admin: true,
+        email: "marinhev1@newpaltz.edu",
+        handle: "virimarin"
     }
 }
 
