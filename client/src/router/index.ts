@@ -4,7 +4,7 @@ import { useSession } from '@/model/session'
 import HomeView from '@/views/HomeView.vue'
 import ActivityView from '../views/ActivityView.vue'
 import StatisticsVue from '../views/Statistics.vue'
-import FriendsActivity from '../views/FriendsActivity.vue'
+import FriendsActivity from '@/views/FriendsActivity.vue'
 import PeopleSearch from '@/views/PeopleSearch.vue'
 import User from '../views/Users.vue'
 

@@ -1,70 +1,51 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+
 </script>
 
 <template>
-    <div class="modal is-active">
-        <div class="modal-background"></div>
-        <div class="modal-card has-background-white">
-            <header class="modal-card-head">
-                <p class="modal-card-title">Add Workout</p>
-                <button class="delete" aria-label="close"></button>
-            </header>
-            <section class="modal-card-body">
-                <form>
-                    <div class="field">
-                        <label class="label">Title</label>
-                        <div class="control">
-                            <input type="text" class="input" placeholder="">
-                        </div>
+    <div class="container">
+        <h1 class="title">Friends Activity</h1>
+        <div class="columns">
+            <div class="column is-half is-offset-one-quarter">
+                <button class="button is-danger is-fullwidth">Add Workout</button>
+                    <div class="box">
+                        <article class="media">
+                            <div class="media-left">
+                                <figure class="image is-64x64">
+                                    <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                    <strong>John Smith</strong> <small>@johnsmith</small> <small> 2 DAYS AGO</small>
+                                    <br>
+                                        "Ran through campus - location"
+                                    </p>
                     </div>
-                    <div class="field">
-                        <label class="label">Date</label>
-                        <div class="control">
-                            <input type="date" class="input" placeholder="mm/dd/yyyy">
+                    <nav class="level is-mobile">
+                        <div class="level-left">
+                            <a class="level-item" aria-label="reply">
+                                <span class="icon is-small">
+                                    <i class="fas fa-reply" aria-hidden="true"></i>
+                                </span>
+                            </a>
+                            <a class="level-item" aria-label="retweet">
+                                <span class="icon is-small">
+                                    <i class="fas fa-retweet" aria-hidden="true"></i>
+                                </span>
+                            </a>
+                            <a class="level-item" aria-label="like">
+                                <span class="icon is-small">
+                                    <i class="fas fa-heart" aria-hidden="true"></i>
+                                </span>
+                            </a>
                         </div>
-                    </div>
-                    <div class="field">
-                        <label class="label">Duration</label>
-                        <div class="control">
-                            <input type="text" class="input" placeholder="">
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label class="label">Location</label>
-                        <div class="control">
-                            <input type="text" class="input" placeholder="">
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label class="label">Picture</label>
-                        <div class="control">
-                            <input type="text" class="input" placeholder="">
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label class="label">Type</label>
-                        <div class="select">
-                            <select id="type" class="form-control">
-                                <option value="run">Run</option>
-                                <option value="bike">Bike</option>
-                                <option value="walk">Walk</option>
-                                <option value="cardio">Cardio</option>
-                                <option value="strength">Strength</option>
-                            </select>
-                        </div>
-                    </div>
-                </form>
-            </section>
-            <footer class="modal-card-foot">
-                <button class="button is-warning">Save Workout</button>
-                <button class="button">Cancel</button>
-            </footer>
+                    </nav>
+                </div>
+                </article>
+            </div>
+            </div>
         </div>
     </div>
 </template>
-
-<style scoped>
-
-
-</style>
