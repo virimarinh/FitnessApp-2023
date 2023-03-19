@@ -4,7 +4,7 @@ import {modalActive, closeModal} from '@/model/modal'
 
 <template>
 <div v-if="modalActive" class="modal is-active">
-    <div class="modal-background"></div>
+    <div @click="closeModal" class="modal-background"></div>
         <div v-if="modalActive" class="modal-card">
             <header class="modal-card-head">
                 <p class="modal-card-title">Add Workout</p>
@@ -13,9 +13,9 @@ import {modalActive, closeModal} from '@/model/modal'
             <section class="modal-card-body">
                 <form>
                     <div class="field">
-                        <label for="name">Type</label>
+                        <label for="name">Title</label>
                         <div class="control">
-                            <input id="type" type="text" class="input">
+                            <input id="title" type="text" class="input">
                         </div>
                     </div>
                     <div class="field">

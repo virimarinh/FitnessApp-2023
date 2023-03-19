@@ -65,7 +65,6 @@ import { modalActive, toggleModal, closeModal } from '@/model/modal';
                                 <button class="delete"></button>
                             </div>
                         </article>
-                        
                     </div>
             </div>
         </div>
