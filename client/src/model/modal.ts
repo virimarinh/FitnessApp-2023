@@ -1,8 +1,12 @@
-//import ModalVue from "@/components/Modal.vue";
-import { computed, ref } from "vue";
+import { ref } from 'vue';
+import Modal from '@/components/Modal.vue';
 
-const modalActive = ref(false);
+export const modalActive = ref(false)
 
-export function toggleM () {
-    return !modalActive.value
-};
+export function toggleModal(){
+  return modalActive.value =!modalActive.value;
+}
+
+export function closeModal(){
+  return modalActive.value = false;
+}
