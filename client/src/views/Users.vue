@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { useSession, login, useLogout } from '@/model/session';
+import { useSession, login, useLogout } from '../model/session';
+import { getUsers, type User } from '../model/users';
+
+const user = ref(getUsers());
 
 const session = useSession();
 const logout = useLogout();
@@ -21,7 +24,8 @@ function logout2() {
             <li class="is-active"><a href="#">Users</a></li>
         </ul>
     </nav>
-    <div class="container">
+    <div 
+    class="container">
         <button class="button is-danger"> Add User</button>
         <table class="table is-bordered is-fullwidth">
     <thead>
@@ -36,15 +40,15 @@ function logout2() {
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th>
-        <img src="../assets/adminPicture.JPG" alt="">
-      </th>
-      <td>Viridiana</td>
-      <td>Marin</td>
-      <td>marinhev1@newpaltz.edu</td>
-      <td>virimarin</td>
-      <td>true</td>
+     <tr v-for="user in User" :key="user.id">
+       <!-- <th>
+         <img src="../assets/adminPicture.JPG" alt="">
+        </th> -->
+      <td>{{ user.fisrtName }}</td>
+      <td>{{ user.lastName }}</td>
+      <td>{{ user.email}}</td>
+      <td>{{ user.handle}}</td>
+      <td>{{ user.admin }}</td>
       <td>
         <button>
             <span class="icon is-medium">
@@ -58,46 +62,6 @@ function logout2() {
         </button>
     </td>
     </tr>
-      <tr>
-      <th>1</th>
-      <td>Viridiana</td>
-      <td>Marin</td>
-      <td>marinhev1@newpaltz.edu</td>
-      <td>virimarin</td>
-      <td>yes</td>
-      <td>
-        <button>
-            <span class="icon is-medium">
-                <i class="fa-solid fa-pen-to-square"></i>
-            </span>
-        </button>
-        <button>
-            <span class="icon is-medium">
-                <i class="fa-solid fa-trash"></i>
-            </span>
-        </button>
-      </td>
-      </tr>
-      <tr>
-      <th>1</th>
-      <td>Viridiana</td>
-      <td>Marin</td>
-      <td>marinhev1@newpaltz.edu</td>
-      <td>virimarin</td>
-      <td>yes</td>
-      <td>
-        <button>
-            <span class="icon is-medium">
-                <i class="fa-solid fa-pen-to-square"></i>
-            </span>
-        </button>
-        <button>
-            <span class="icon is-medium">
-                <i class="fa-solid fa-trash"></i>
-            </span>
-        </button>
-      </td>
-      </tr>
   </tbody>
 </table>
     </div>
