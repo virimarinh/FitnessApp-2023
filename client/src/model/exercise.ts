@@ -4,7 +4,7 @@ import data from '../data/exercises.json'
         //create data
     export const workoutName = ref('');
     export const workoutType = ref('select-workout');
-    export const exercises = ref([]);
+    export const exercises = ref([] as Exercises[]);
     export const newExcercise = ref("");
     export const statusMsg = ref("");
     export const erronsMsg = ref("");
@@ -17,3 +17,4 @@ export interface Exercises {
     picture?: [];
     type: string
 }
+

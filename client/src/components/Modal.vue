@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {modalActive, closeModal} from '@/model/modal';
-//import {workoutName, workoutType, exercises, statusMsg, erronsMsg} from '@/model/exercise';
+import {workoutName, workoutType, exercises, statusMsg, erronsMsg} from '@/model/exercise';
 
 </script>
 
