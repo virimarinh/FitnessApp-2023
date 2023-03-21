@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import Modal from '@/components/Modal.vue';
+import img from '@/assets/adminPicture1.jpg'
 import { modalActive, toggleModal, closeModal } from '@/model/modal';
 
 </script>
@@ -16,7 +17,7 @@ import { modalActive, toggleModal, closeModal } from '@/model/modal';
                         <article class="media">
                             <div class="media-left">
                                 <figure class="image is-64x64">
-                                    <img src="../assets/adminPicture.JPG" alt="Image">
+                                    <img :src="img" alt="Image">
                                 </figure>
                             </div>
                             <div class="media-content">

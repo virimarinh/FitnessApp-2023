@@ -16,7 +16,7 @@ import { modalActive, toggleModal, closeModal } from '@/model/modal';
                         <article class="media">
                             <div class="media-left">
                                 <figure class="image is-64x64">
-                                    <img src="../assets/adminPicture.JPG" alt="Image">
+                                    <img src="../assets/adminPicture1.jpg" alt="Image">
                                 </figure>
                             </div>
                             <div class="media-content">

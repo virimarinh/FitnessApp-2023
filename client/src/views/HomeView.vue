@@ -60,7 +60,7 @@
                           </div>
                           <div class="column">
                           <div class="box has-text-danger">
-                            <h2 class="title">Today</h2>
+                            <h2 class="title">All Time</h2>
                             <div class="columns is-multiline">
                               <div class="column is-half">
                                 <h3 class="value">0 ft</h3>
