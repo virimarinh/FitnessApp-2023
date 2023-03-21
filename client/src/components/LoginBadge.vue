@@ -1,7 +1,14 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useSession, login, useLogout } from '@/model/session';
+import { users } from '../model/users';
 
+const menuActive = ref(false);
+
+function toggleMenu(){
+  return menuActive.value =!menuActive.value;
+}
+const user = ref(users);
 const session = useSession();
 const logout = useLogout();
 
@@ -23,7 +30,7 @@ function logout2() {
             </span>
             <strong>Sign up</strong>
         </a>
-        <div class="dropdown is-active">
+        <div class="dropdown is-active" @click="toggleMenu" >
   <div class="dropdown-trigger">
     <button class="button" aria-haspopup="true" aria-controls="dropdown-menu2">
       <span>Login</span>
@@ -33,19 +40,15 @@ function logout2() {
     </button>
   </div>
   <div class="dropdown-menu" id="dropdown-menu2" role="menu">
-    <div class="dropdown-content">
+    <div class="dropdown-content" v-for="user in users" :key="user.id">
       <div class="dropdown-item" @click="login">
-        Viridiana Marin
+        {{user.firstName}} {{ user.lastName }}
       </div>
-      <hr class="dropdown-divider">
-      <div class="dropdown-item">
-        <p>You simply need to use a <code>&lt;div&gt;</code> instead.</p>
-      </div>
-      <hr class="dropdown-divider">
+    </div>
+    <hr class="dropdown-divider">
       <a href="/login" class="dropdown-item">
         Other Account
       </a>
-    </div>
   </div>
 </div>
         <!-- <a class="button" @click="login">

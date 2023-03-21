@@ -1,6 +1,6 @@
 import { reactive  } from "vue";
 import { useRouter } from "vue-router";
-
+import { users } from '../model/users';
 const session = reactive({
     user: null as User | null,
 })
