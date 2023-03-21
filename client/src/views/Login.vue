@@ -16,7 +16,7 @@
             Loggin in as other should give you only the Activity page
         </p>
 
-        <div class="column is-half is-offset-one-quarters">
+        <div class="column is-half is-offset-one-quarter">
 
         <div class="field ">
             <label class="label">Name</label>

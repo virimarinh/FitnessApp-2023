@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useSession, login, useLogout } from '../model/session';
-import { getUsers, type User } from '../model/users';
+import { users } from '../model/users';
 
-const user = ref(getUsers());
+const user = ref(users);
 
 const session = useSession();
 const logout = useLogout();
@@ -40,11 +40,11 @@ function logout2() {
     </tr>
   </thead>
   <tbody>
-     <tr v-for="user in User" :key="user.id">
-       <!-- <th>
-         <img src="../assets/adminPicture.JPG" alt="">
-        </th> -->
-      <td>{{ user.fisrtName }}</td>
+     <tr v-for="user in users" :key="user.id">
+       <th>
+         <img src="" alt="">
+        </th>
+      <td>{{ user.firstName }}</td>
       <td>{{ user.lastName }}</td>
       <td>{{ user.email}}</td>
       <td>{{ user.handle}}</td>

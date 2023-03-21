@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import {modalActive, closeModal} from '@/model/modal'
+import {modalActive, closeModal} from '@/model/modal';
+//import {workoutName, workoutType, exercises, statusMsg, erronsMsg} from '@/model/exercise';
+
 </script>
 
 <template>
@@ -13,9 +15,9 @@ import {modalActive, closeModal} from '@/model/modal'
             <section class="modal-card-body">
                 <form>
                     <div class="field">
-                        <label for="name">Title</label>
+                        <label for="name">Name</label>
                         <div class="control">
-                            <input id="title" type="text" class="input">
+                            <input id="workout-name" type="text" required class="input">
                         </div>
                     </div>
                     <div class="field">
@@ -43,9 +45,9 @@ import {modalActive, closeModal} from '@/model/modal'
                         </div>
                     </div>
                     <div class="select is-fullwidth">
-                        <label>Type</label>
-                        <select id="type" class="form-control">
-                            <option value=""></option>
+                        <label for="workout-type">Type</label>
+                        <select id="workout-type" required class="form-control">
+                            <option value="select Workout">Select Workout</option>
                             <option value="run">Run</option>
                             <option value="walk">Walk</option>
                             <option value="bike">Bike</option>
