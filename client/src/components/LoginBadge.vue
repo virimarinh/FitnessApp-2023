@@ -20,7 +20,7 @@ function logout2() {
 
 <template>
     <div class="navbar-item" v-if="session.user">
-        {{ session.user.name }}
+        {{ session.user.firstName }} {{ session.user.lastName }}
         (<a @click="logout2()">Logout</a>)
     </div>
     <div class="navbar-item" v-else>
@@ -41,7 +41,7 @@ function logout2() {
   </div>
   <div class="dropdown-menu" id="dropdown-menu2" role="menu">
     <div class="dropdown-content" v-for="user in users" :key="user.id">
-      <div class="dropdown-item" @click="login">
+      <div class="dropdown-item" @click="login(user)">
         {{user.firstName}} {{ user.lastName }}
       </div>
     </div>
