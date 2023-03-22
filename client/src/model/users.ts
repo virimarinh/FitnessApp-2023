@@ -9,14 +9,14 @@ export interface User {
     admin: boolean;
     email: string;
     handle: string;
-    photo: string[];
+    photo?: string[];
 }
 
 // export function getUsers(): User[]{
 //     return data.users;
 // }
 
-export const users = ref([
+export const users = ref<User[]>([
     {
         "id": 1,
         "firstName": "Viri",

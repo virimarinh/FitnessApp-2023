@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import  { saveWorkout } from '@/model/exercise';
 import {modalActive, closeModal} from '@/model/modal';
-import {workoutName, workoutType, exercises, statusMsg, erronsMsg} from '@/model/exercise';
-
+ 
 </script>
 
 <template>
@@ -58,6 +58,7 @@ import {workoutName, workoutType, exercises, statusMsg, erronsMsg} from '@/model
                 </form>
             </section>
             <footer class="modal-card-foot">
+                <!-- @click="saveWorkout -->
                 <button class="button is-success">Save changes</button>
                 <button @click="closeModal" class="button">Cancel</button>
             </footer>

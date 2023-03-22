@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import  { exercises } from '@/model/exercise';
 import { ref } from 'vue';
 import Modal from '@/components/Modal.vue';
 import img from '@/assets/adminPicture1.jpg'
 import { modalActive, toggleModal, closeModal } from '@/model/modal';
+
 
 </script>
 <template> 
@@ -13,7 +15,7 @@ import { modalActive, toggleModal, closeModal } from '@/model/modal';
                 <Modal :modalActive="modalActive"></Modal>
                 <button @click="toggleModal" class="button is-danger is-fullwidth">Add Workout</button>
                 <br>
-                    <div class="box">
+                    <div class="box" v-for= "exercise in exercises" >
                         <article class="media">
                             <div class="media-left">
                                 <figure class="image is-64x64">
@@ -23,21 +25,21 @@ import { modalActive, toggleModal, closeModal } from '@/model/modal';
                             <div class="media-content">
                                 <div class="content">
                                     <p>
-                                        <strong>Viri Marin</strong> 
-                                        <small>@virimarin</small> 
+                                        <strong>{{  }}</strong> 
+                                        <small></small> 
                                         <small> 2 DAYS AGO</small>
                                         <br>
-                                        "Ran through campus - location"
+                                        {{ exercise.name }}
                                     </p>
                                 <div class="columns">
                                     <div class="column is-flex is-justify-content-space-between is-justify-content-center is-justify-content-space-evenly">
                                         <div>
-                                            <div class="title">0ft</div>
-                                            <div class="heading">Distance</div>
+                                            <div class="title">{{exercise.duration}}</div>
+                                            <div class="heading">Location</div>
                                         </div>
                                         <div>
-                                            <div class="title">0ft</div>
-                                            <div class="heading">Distance</div>
+                                            <div class="title">{{exercise.duration}}</div>
+                                            <div class="heading">Duration</div>
                                         </div>
                                     </div>
                                 </div>

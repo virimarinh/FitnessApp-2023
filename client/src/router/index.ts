@@ -16,7 +16,7 @@ const router = createRouter({
     { path: '/login', name: 'login', component: LoginVue},
     { path: '/friends-activity', name: 'friends-activity', component: FriendsActivity},
     { path: '/people-search', name: 'people-search', component: PeopleSearch},
-    { path: '/users', name: 'users', component:User},
+    { path: '/users', name: 'users', component:User, beforeEnter: secureRouter},
     {
       path: '/statistics',
       name: 'statistics',

@@ -1,6 +1,6 @@
 import { ref } from 'vue';
 import Modal from '@/components/Modal.vue';
-import { exercises, workoutName, workoutType, newExcercise} from './exercise';
+//import { exercise, type Exercise, workoutName, workoutType, newExcercise} from './exercise';
 
 
 export const modalActive = ref(false);
@@ -12,3 +12,4 @@ export function toggleModal(){
 export function closeModal(){
   return modalActive.value = false;
 }
+
