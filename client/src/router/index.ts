@@ -8,6 +8,7 @@ import FriendsActivity from '@/views/FriendsActivity.vue'
 import PeopleSearch from '@/views/PeopleSearch.vue'
 import User from '../views/Users.vue'
 
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -27,12 +28,9 @@ const router = createRouter({
     },
     {
       path: '/addExercise',
-      name: 'addExercise',
-      component: () => import('../views/ExerciseEdit')
+      name: 'ExerciseEdit',
+      component: ExerciseEdit
     }
-    
-
-
   ]
 })
 
