@@ -1,5 +1,6 @@
 
 import data from "../data/exercises.json";
+import users from "../data/users.json";
 
 
 // //create data
@@ -10,15 +11,17 @@ import data from "../data/exercises.json";
 // export const erronsMsg = ref("");
 
 export interface Exercise {
+    userId: number;
     handle: string;
     name: string;
     date?: string;
     duration?: string;
     location?: string;
-    picture?: string[];
+    picture?: string;
     type: string
 }
 
+
 export function getExercises(): Exercise[] {
-    return data.exercises;
+    return data.exercises
 }

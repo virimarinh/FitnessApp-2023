@@ -1,57 +1,69 @@
 {
     "exercises":[
     {
+        "userId": 1,
+        "userName": "Viri Marin",
         "handle": "@virimarin",
         "name": "Biked through campus",
         "date": "03/20/2023",
         "duration": "1 hour",
         "location": "New Paltz",
-        "picture": ["http://t3.gstatic.com/licensed-image?q=tbn:ANd9GcTTmrxYuiGmw6nmOCKjjSHdtRWLq6Upml3Kb__p9ihakdUwUoxVYKfi4GD5X52Us0X1"],
+        "picture": "http://t3.gstatic.com/licensed-image?q=tbn:ANd9GcTTmrxYuiGmw6nmOCKjjSHdtRWLq6Upml3Kb__p9ihakdUwUoxVYKfi4GD5X52Us0X1",
         "type": "bike"
     },
     {   
+        "userId": 1,
+        "userName": "Viri Marin",
         "handle": "@virimarin",
         "name": "Morning Run",
         "date": "03/19/2023",
         "duration": "1.5 hour",
         "location": "New Paltz",
-        "picture": ["https://www.boboandchichi.com/wp-content/uploads/Downtown-New-Paltz-New-York-836x558.jpg"],
+        "picture": "https://www.boboandchichi.com/wp-content/uploads/Downtown-New-Paltz-New-York-836x558.jpg",
         "type": "run"
     },
     {
+        "userId": 2,
+        "userName": "Jessica Martinez",
         "handle": "@jessicaM1",
         "name": "Walked the Mid-Hudson Bridge",
         "date": "03/17/2023",
         "duration": "1.5 hour",
         "location": "Highland, NY",
-        "picture": ["https://s.hdnux.com/photos/01/24/52/51/22194754/6/rawImage.jpg"],
+        "picture": "https://s.hdnux.com/photos/01/24/52/51/22194754/6/rawImage.jpg",
         "type": "walk"
     },
     {
+        "userName": "Jessica Martinez",
+        "userId": 2,
         "handle": "@jessicaM1",
         "name": "Pilates",
         "date": "03/17/2023",
         "duration": "1.5 hour",
         "location": "Highland, NY",
-        "picture": ["https://gethealthyu.com/wp-content/uploads/2017/08/Pilates-Exercises-for-Beginners.png.webp"],
+        "picture": "https://gethealthyu.com/wp-content/uploads/2017/08/Pilates-Exercises-for-Beginners.png.webp",
         "type": "walk"
     },
     {
+        "userId": 3,
+        "userName": "John Smith",
         "handle": "@johnSm12",
         "name": "Walked the Mid-Hudson Bridge",
         "date": "03/17/2023",
         "duration": "1.5 hour",
         "location": "Highland, NY",
-        "picture": ["https://s.hdnux.com/photos/01/24/52/51/22194754/6/rawImage.jpg"],
+        "picture": "https://s.hdnux.com/photos/01/24/52/51/22194754/6/rawImage.jpg",
         "type": "walk"
     },
     {
+        "userId": 3,
+        "userName": "John Smith",
         "handle": "@johnSm12",
         "name":"Morning Run",
         "date": "03/26/2023",
         "duration": "45 minutes",
         "location": "Poughkeepsie",
-        "picture":["https://assets-hvmag-com.s3-accelerate.amazonaws.com/2018/05/Hudson-Valley-Running-Trails.jpg"],
+        "picture":"https://assets-hvmag-com.s3-accelerate.amazonaws.com/2018/05/Hudson-Valley-Running-Trails.jpg",
         "type": "run"
     }
 

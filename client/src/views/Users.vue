@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useSession, login, useLogout } from '../model/session';
-import { users } from '../model/users';
+import { getUsers } from '../model/users';
 
+const users = getUsers();
 const user = ref(users);
 
 const session = useSession();

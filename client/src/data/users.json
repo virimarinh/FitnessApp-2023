@@ -5,7 +5,7 @@
             "firstName": "Viri",
             "lastName": "Marin",
             "admin": true,
-            "handle": "vmarin",
+            "handle": "@virimarin",
             "email": "marinherv1@newpaltz.edu"
         },
         {
@@ -13,7 +13,7 @@
             "firstName": "John",
             "lastName": "Smith",
             "admin": false,
-            "handle": "jsmith",
+            "handle": "@johnSm12",
             "email": "jsmith@gmail.com"
         },
         {
@@ -21,7 +21,7 @@
             "firstName": "Lucy",
             "lastName": "Martinez",
             "admin": false,
-            "handle": "lucym",
+            "handle": "@jessicaM1",
             "email": "lucymartinez@hotmail.com"
         }
     ]
