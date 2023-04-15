@@ -6,6 +6,7 @@
     "paths": {
       "@/*": ["./src/*"]
     },
+    "lib": ["es2018", "DOM"],
     "ignoreDeprecations": "5.0"
   },
 
