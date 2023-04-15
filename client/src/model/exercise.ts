@@ -12,6 +12,7 @@ import users from "../data/users.json";
 
 export interface Exercise {
     userId: number;
+    userName: string;
     handle: string;
     name: string;
     date?: string;

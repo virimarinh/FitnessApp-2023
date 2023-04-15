@@ -24,8 +24,8 @@ const exercises = getExercises();
                             <div class="media-content">
                                 <div class="content">
                                     <p>
-                                        <strong>{{ exercise.handle }}</strong> 
-                                        <small></small> 
+                                        <strong>{{ exercise.userName }} </strong> 
+                                        <small> {{ exercise.handle }}</small> 
                                         <small> {{exercise.date}}</small>
                                         <br>
                                         {{ exercise.name }}
