@@ -1,0 +1,31 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "firstName": "Viri",
+            "lastName": "Marin",
+            "admin": true,
+            "handle": "@virimarin",
+            "email": "marinherv1@newpaltz.edu",
+            "picture": "/Users/virimarin/Desktop/WebDevelopment/Repos/WebDevProjects-2023/client/src/assets/adminPicture1.jpg"
+        },
+        {
+            "id": 2,
+            "firstName": "John",
+            "lastName": "Smith",
+            "admin": false,
+            "handle": "@johnSm12",
+            "email": "jsmith@gmail.com",
+            "photo": ""
+        },
+        {
+            "id": 3,
+            "firstName": "Lucy",
+            "lastName": "Martinez",
+            "admin": false,
+            "handle": "@jessicaM1",
+            "email": "lucymartinez@hotmail.com",
+            "photo": ""
+        }
+    ]
+}
