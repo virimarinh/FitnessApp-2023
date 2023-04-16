@@ -1,6 +1,8 @@
 
 import data from "../data/exercises.json";
 import users from "../data/users.json";
+import type { DataEnvelope, DataListEnvelope } from "./myFetch";
+import { api } from "./session";
 
 // //create data 
 // export const workoutName = ref('');
@@ -22,10 +24,13 @@ export interface Exercise {
 }
 
 
-export function getExercises(): Exercise[] {
-    return data.exercises
+export function getExercises(): Promise<DataListEnvelope<Exercise>> {
+    return api('exercises')
 }
 
+export function getExercise(id: number): Promise<DataListEnvelope<Exercise>> {
+    return api('exercises/${id}')
+}
 // export function getExercisesId(): Exercise[] {
 //     const getExercises = data.exercises;
 
@@ -34,5 +39,6 @@ export function getExercises(): Exercise[] {
 
 const exercises = getExercises();
 
-
-
+export function createExercise(exercise: Exercise): Promise<DataEnvelope<Exercise>> {
+    return api('exercises', exercise)
+}
