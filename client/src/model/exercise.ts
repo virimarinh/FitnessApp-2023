@@ -2,8 +2,7 @@
 import data from "../data/exercises.json";
 import users from "../data/users.json";
 
-
-// //create data
+// //create data 
 // export const workoutName = ref('');
 // export const workoutType = ref('select-workout');
 // export const newExcercise = ref("");
@@ -26,3 +25,14 @@ export interface Exercise {
 export function getExercises(): Exercise[] {
     return data.exercises
 }
+
+// export function getExercisesId(): Exercise[] {
+//     const getExercises = data.exercises;
+
+//     return this.exercises.userId;
+// }
+
+const exercises = getExercises();
+
+
+

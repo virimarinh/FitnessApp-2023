@@ -1,11 +1,11 @@
 import { reactive  } from "vue";
 import { useRouter } from "vue-router";
 import type { User } from './users';
+import { getExercises } from "./exercise";
+import type { Exercise } from "./exercise";
 const session = reactive({
     user: null as User | null,
 })
-
-
 
 export function useSession() {
     return session;

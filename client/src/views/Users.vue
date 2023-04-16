@@ -43,7 +43,7 @@ function logout2() {
   <tbody>
      <tr v-for="user in users" :key="user.id">
        <th>
-         <img src="" alt="">
+         <img :src="user.photo" alt="">
         </th>
       <td>{{ user.firstName }}</td>
       <td>{{ user.lastName }}</td>

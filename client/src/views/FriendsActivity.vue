@@ -3,8 +3,12 @@ import { ref } from 'vue';
 import Modal from '@/components/Modal.vue';
 import { modalActive, toggleModal, closeModal } from '@/model/modal';
 import { getExercises } from '@/model/exercise';
+import { useSession } from '@/model/session';
+import Users from './Users.vue';
 
 const exercises = getExercises();
+const session = useSession();
+
 </script>
 <template> 
   <div class="container">
@@ -18,7 +22,7 @@ const exercises = getExercises();
                         <article class="media">
                             <div class="media-left">
                                 <figure class="image is-64x64">
-                                   <img :src="exercise.picture" alt="" class="img">
+                                   <img :src="session.user?.photo" alt="" class="img">
                                 </figure>
                             </div>
                             <div class="media-content">
@@ -41,6 +45,11 @@ const exercises = getExercises();
                                             <div class="heading">Duration</div>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="columm">
+                                    <Figure>
+                                         <img :src="exercise.picture" alt="" style="max-height: 100%;">
+                                    </Figure>
                                 </div>
                                 </div>
                                 <nav class="level is-mobile">

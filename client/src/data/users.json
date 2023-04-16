@@ -6,7 +6,8 @@
             "lastName": "Marin",
             "admin": true,
             "handle": "@virimarin",
-            "email": "marinherv1@newpaltz.edu"
+            "email": "marinherv1@newpaltz.edu",
+            "picture": "/Users/virimarin/Desktop/WebDevelopment/Repos/WebDevProjects-2023/client/src/assets/adminPicture1.jpg"
         },
         {
             "id": 2,
@@ -14,7 +15,8 @@
             "lastName": "Smith",
             "admin": false,
             "handle": "@johnSm12",
-            "email": "jsmith@gmail.com"
+            "email": "jsmith@gmail.com",
+            "photo": ""
         },
         {
             "id": 3,
@@ -22,7 +24,8 @@
             "lastName": "Martinez",
             "admin": false,
             "handle": "@jessicaM1",
-            "email": "lucymartinez@hotmail.com"
+            "email": "lucymartinez@hotmail.com",
+            "photo": ""
         }
     ]
 }

@@ -1,42 +1,73 @@
 <script setup lang="ts">
-    const props = defineProps<{
-        title?: string;
-        isOpen: boolean;
-    }>();
+
+import {modalActive, closeModal} from '@/model/modal';
  
-    const emit = defineEmits<{
-        (e: 'update:isOpen', value: boolean): void;
-    }>();
 </script>
 
 <template>
-    <div class="modal" :class="{ 'is-active' : props.isOpen }">
-        <div class="modal-background"></div>
-
-        <div class="modal-card">
+<div v-if="modalActive" class="modal is-active">
+    <div @click="closeModal" class="modal-background"></div>
+        <div v-if="modalActive" class="modal-card">
             <header class="modal-card-head">
-                <slot class="header">
-                    <p class="modal-card-title">{{ props.title }}</p>
-                    <button class="delete" aria-label="close" @click="emit('update:isOpen', false)"></button>
-                </slot>
+                <p class="modal-card-title">Add Workout</p>
+                <button @click="closeModal" class="delete" aria-label="close"></button>
             </header>
             <section class="modal-card-body">
-                <slot></slot>
+                <form>
+                    <div class="field">
+                        <label for="name">Name</label>
+                        <div class="control">
+                            <input id="workout-name" type="text" required class="input">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="name">Date</label>
+                        <div class="control">
+                            <input id="date" type="date" class="input" placeholder="mm/dd/yyyy">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="name">Duration</label>
+                        <div class="control">
+                            <input id="duration" type="text" class="input">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="name">Location</label>
+                        <div class="control">
+                            <input id="location" type="text" class="input">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="name">Picture</label>
+                        <div class="control">
+                            <input id="picture" type="text" class="input">
+                        </div>
+                    </div>
+                    <div class="select is-fullwidth">
+                        <label for="workout-type">Type</label>
+                        <select id="workout-type" required class="form-control">
+                            <option value="select Workout">Select Workout</option>
+                            <option value="run">Run</option>
+                            <option value="walk">Walk</option>
+                            <option value="bike">Bike</option>
+                            <option value="cardio">Cardio</option>
+                            <option value="strength">Strength</option>
+                        </select>
+                    </div>
+                </form>
             </section>
-            <footer class="modal-card-footer">
-                <slot class="footer">
-                    <button class="button is-success">Save Changes</button>
-                    <button class="button">Cancel</button>
-                </slot>
+            <footer class="modal-card-foot">
+                <!-- @click="saveWorkout -->
+                <button class="button is-success">Save changes</button>
+                <button @click="closeModal" class="button">Cancel</button>
             </footer>
         </div>
-    </div>
+</div>
+
 </template>
 
 <style scoped>
-
-
 </style>
 <script>
-
 </script>

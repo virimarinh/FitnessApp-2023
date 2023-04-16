@@ -9,7 +9,7 @@ export interface User {
     admin: boolean;
     email: string;
     handle: string;
-    photo?: string[];
+    photo?: string;
 }
 
 export function getUsers(): User[]{
