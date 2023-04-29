@@ -1,15 +1,15 @@
 const express = require('express');
-const model = require('../models/exercises');
+const model = require('../models/users');
 const router = express.Router();
 
-router
-    .get('/', (req, res, next) => {
+router 
+    .get('/', (req, res, next) =>{
         model.getAll()
             .then(list => {
                 const data = { data: list, total: list.length, isSuccess: true };
                 res.send(data)
-        }).catch(next);
-    })    
+            }).catch(next);
+    })
     .get('/search/:q', (req, res) => {
         const term = req.params.q;
         console.log({ term });
@@ -17,50 +17,51 @@ router
         const data = { data: list, total: list.length, isSuccess: true };
         res.send(data)
     })
-    .get('/:id', (req, res) => {
-        const id = +req.params.id;
-        const exercise = model.getById(id);
-        const data = {
-            data: exercise, isSuccess: true
+    .get('/:id', (req, res)=> {
+        const id = req.params.id;
+        const users = model.getById;
+        const data = { 
+            data: users, total: 1, isSuccess: true 
         };
         res.send(data)
     })
 
     .post('/', (req, res) => {
-        const exercise = req.body;
+        const user = req.body;
 
-        console.log({ exercise });
-        console.log( req.query);
-        console.log( req.params);
-        console.log( req.headers);
+        console.log({ user });
+        console.log( req.query );
+        console.log( req.params );
+        console.log( req.headers );
 
-        model.add(exercise);
+        model.add(user);
         const data = {
-            data: exercise, isSuccess: true
+            data: user, isSuccess: true
         };
         res.send(data)
     })
 
-    .patch('/:id', (req, res) => {
-        const exercise = req.body;
-        model.update(exercise);
-        const data = { 
-            data: exercise, isSuccess: true };
-            res.send(data)
+    .patch('/', (req, res) => {
+        const user = req.body;
+        model.update(user);
+        const data = {
+            data: user, isSuccess: true
+        };
+        res.send(data)
     })
 
     .delete('/:id', (req, res) => {
         const id = req.params.id;
         model.deleteItem(id);
         const data = {
-            data: exercise, isSuccess: true
+            data: user, isSuccess: true
         };
         res.send(data)
     })
 
-    module.exports = router;
+    module.exports = router; 
 
-    /*  Ways to pass information to the server:
+     /*  Ways to pass information to the server:
     1. Query String Parameters
     2. Route Parameters
     3. Request Body

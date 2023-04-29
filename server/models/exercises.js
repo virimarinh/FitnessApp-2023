@@ -1,42 +1,51 @@
-const e = require('express');
 const data = require('../data/exercises.json');
+const { connect, ObjectId } = require('./mongo');
 
-function getExercises(){
-    return data.exercises;
+const COLLECTION_NAME = 'exercises';
+
+async function collection() {
+    const db = await connect();
+    return db.collection(COLLECTION_NAME);
 }
 
-function getExerciseById(id) {
+async function getAll(){
+    const col = await collection();
+    const items = await col.find().toArray();
+    return items;
+}
+
+function getById(id) {
     return data.exercises.find(exercises => exercise.id === id);
 }
 
-function addExercise(exercise) {
-    exercise.id = data.exercises.length + 1;
-    data.exercises.push(exercise);
+function add(item) {
+    item.id = data.exercises.length + 1;
+    data.exercises.push(item);
 }
 
-function updateExercise(exercise) {
-    const index = data.exercises.findIndex(p => p.id === exercise.id);
-    data.exercises[index] = exercise;
+function update(item) {
+    const index = data.exercises.findIndex(p => p.id === item.id);
+    data.exercises[index] = item;
 }
 
-function deleteExercise(id) {
+function deleteItem(id) {
     const index = data.exercises.findIndex(p => p.id === id);
     data.exercises.splice(index, 1);
 }
 
-// function searchExercises(searchTerm) {
-//     return data.exercises.filter(exercise => {
-//         return  exercise.title.toLowerCase().includes(searchTerm.toLowerCase())  ||
-//             product.description.toLowerCase().includes(searchTerm.toLowerCase())  ||
-//             product.brand.toLowerCase().includes(searchTerm.toLowerCase());
-//     });
-// }
+function search(searchTerm) {
+    return data.exercises.filter(exercise => {
+        return  exercise.name.toLowerCase().includes(searchTerm.toLowerCase())  ||
+            exercise.location.toLowerCase().includes(searchTerm.toLowerCase())  ||
+            exercise.type.toLowerCase().includes(searchTerm.toLowerCase());
+        });
+}
 
 module.exports = {
-    getProducts,
-    getProductById,
-    addProduct,
-    updateProduct,
-    deleteProduct,
-    //searchProducts
+    getAll,
+    getById,
+    add,
+    update,
+    deleteItem,
+    search
 };
