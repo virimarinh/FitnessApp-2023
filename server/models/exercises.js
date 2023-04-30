@@ -8,37 +8,66 @@ async function collection() {
     return db.collection(COLLECTION_NAME);
 }
 
-async function getAll(){
+async function getAll(page = 1, pageSize = 30){
     const col = await collection();
-    const items = await col.find().toArray();
-    return items;
+    const items = await col.find().skip((page-1) * pageSize).limit(pageSize).toArray();
+    const total = await col.countDocuments();
+    return {items, total};
 }
 
-function getById(id) {
-    return data.exercises.find(exercises => exercise.id === id);
+async function getById(id) {
+    const col = await collection();
+    const item = await col.findOne({_id: new ObjectId(id)});
+    return item;
 }
 
-function add(item) {
-    item.id = data.exercises.length + 1;
-    data.exercises.push(item);
+async function add(item) {
+    const col = await collection();
+
+    const result = await col.insertOne(item);
+
+    item._id = result.insertedId;
+    return item;
 }
 
-function update(item) {
-    const index = data.exercises.findIndex(p => p.id === item.id);
-    data.exercises[index] = item;
+async function update(item) {
+    
+    console.log(item);
+    const col = await collection();
+    const result = await col.findOneAndUpdate(
+        {_id: new ObjectId(item._id)},
+        { $set: item },
+        { returnDocument: 'after'} 
+    );
+
+    return result.value;
+}   
+
+async function deleteItem(id) {
+    const col = await collection();
+    const result = await col.deleteOne({_id: new ObjectId(id)});
+    return result.deletedCount;
 }
 
-function deleteItem(id) {
-    const index = data.exercises.findIndex(p => p.id === id);
-    data.exercises.splice(index, 1);
+async function search(searchTerm, page = 1, pageSize = 30) {
+    const col = await collection();
+    const query = {
+        $or: [
+            { title: { $regex: searchTerm, $options: 'i' } },
+            { description: { $regex: searchTerm, $options: 'i' } },
+            { brand: { $regex: searchTerm, $options: 'i' } }
+        ]
+    };
+
+    const items = await col.find(query).skip((page - 1) * pageSize).limit(pageSize).toArray();
+    const total = await col.countDocuments(query);
+    return { items, total };
 }
 
-function search(searchTerm) {
-    return data.exercises.filter(exercise => {
-        return  exercise.name.toLowerCase().includes(searchTerm.toLowerCase())  ||
-            exercise.location.toLowerCase().includes(searchTerm.toLowerCase())  ||
-            exercise.type.toLowerCase().includes(searchTerm.toLowerCase());
-        });
+async function seed() {
+    const col = await collection();
+    const result = await col.insertMany(data.products);
+    return result.insertedCount;
 }
 
 module.exports = {
@@ -47,5 +76,6 @@ module.exports = {
     add,
     update,
     deleteItem,
-    search
+    search,
+    seed
 };
