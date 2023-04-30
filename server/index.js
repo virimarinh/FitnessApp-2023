@@ -3,6 +3,7 @@ const express = require('express')
 const path = require('path');
 const exercises = require('./controllers/exercises');
 const users = require('./controllers/users')
+const { requireLogin } = require('./middleware/authorization')
 const app = express()
 
 const hostname = '127.0.0.1';
@@ -26,7 +27,7 @@ app
     .get('/api/v1/', (req, res) => {
         res.send('Hello World! From Express')
     })
-    .use('/api/v1/exercises', exercises)
+    .use('/api/v1/exercises', requireLogin(), exercises)
     .use('/api/v1/users', users)
 
 //Catch All
