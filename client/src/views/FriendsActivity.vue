@@ -2,12 +2,14 @@
 import { ref } from 'vue';
 import Modal from '@/components/Modal.vue';
 import { modalActive, toggleModal, closeModal } from '@/model/modal';
-import { getExercises } from '@/model/exercise';
+import { getExercises, type Exercise } from '@/model/exercise';
 import { useSession } from '@/model/session';
 import Users from './Users.vue';
 
-const exercises = getExercises();
-const session = useSession();
+const exercises = ref<Exercise[]>([]);
+getExercises().then((data) => {
+    exercises.value = data.data;
+})
 
 </script>
 <template> 
@@ -22,7 +24,7 @@ const session = useSession();
                         <article class="media">
                             <div class="media-left">
                                 <figure class="image is-64x64">
-                                   <img :src="session.user?.photo" alt="" class="img">
+                                   <!-- <img :src="session.user?.photo" alt="" class="img"> -->
                                 </figure>
                             </div>
                             <div class="media-content">
