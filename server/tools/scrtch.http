@@ -43,3 +43,9 @@ GET  http://localhost:3070/api/v1/exercises/search/biked
 
 ###
 POST http://localhost:3070/api/v1/exercises/seed
+
+###
+POST http://localhost:3070/api/v1/users/seed
+
+###
+GET http://localhost:3070/api/v1/users

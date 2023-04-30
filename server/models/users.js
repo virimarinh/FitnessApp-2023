@@ -66,7 +66,7 @@ async function search(searchTerm, page = 1, pageSize = 30) {
 
 async function seed() {
     const col = await collection();
-    const result = await col.insertMany(data.products);
+    const result = await col.insertMany(data.users);
     return result.insertedCount;
 }
 
