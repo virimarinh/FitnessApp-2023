@@ -27,10 +27,10 @@ import LoginBadge from './LoginBadge.vue';
               <i class="fa-solid fa-person-walking"></i>
                My Activity
             </RouterLink>
-            <RouterLink to="/statistics" class="navbar-item">
+            <!-- <RouterLink to="/statistics" class="navbar-item">
               <i class="fa-light fa-chart-line"></i>
               Statistics
-            </RouterLink>
+            </RouterLink> -->
             <RouterLink to="/friends-activity" class="navbar-item">
               <i class="fa-solid fa-users"></i>
               Friends Activity
