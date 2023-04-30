@@ -3,7 +3,7 @@ const express = require('express')
 const path = require('path');
 const exercises = require('./controllers/exercises');
 const users = require('./controllers/users')
-const { requireLogin } = require('./middleware/authorization')
+const { requireLogin, parseAuthorizationHeader } = require('./middleware/authorization')
 const app = express()
 
 const hostname = '127.0.0.1';
@@ -15,12 +15,15 @@ app
     .use(express.json())
     .use(express.static(path.join(__dirname, '../client/dist')))
 
+    //CORS
     .use((req, res, next) => {
         res.header('Access-Control-Allow-Origin', '*')
-        res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+        res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization')
         res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS')
         next()
     })
+
+    .use(parseAuthorizationHeader)
 
 //Actions
 app 

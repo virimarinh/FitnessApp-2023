@@ -1,6 +1,5 @@
 @port=3070
 @jwt={{login.response.body.data.token}}
-
 ###
 GET http://localhost:{{port}}/
 

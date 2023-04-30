@@ -16,17 +16,27 @@ interface User {
     firstName?: string;
     lastName?: string;
     admin?: boolean;
-    email?: string;
+    email: string;
+    password: string;
     handle?: string;
     photo?: string;
+    token?: string;
 }
 
 export function useSession() {
     return session;
 }
 
-export function api(url: string, data?: any, method?: string, headers?: string){
+export function api(url: string, data?: any, method?: string, headers?: any) {
     session.isLoading = true;
+
+    if(session.user?.token){
+        headers = {
+            "Authorization": 'Bearer ${session.user.token}',
+            ...headers,
+        }
+    }
+    
     return myFetch.api(url, data, method, headers)
         .catch(err =>{
             console.error({err});
@@ -43,10 +53,19 @@ export function api(url: string, data?: any, method?: string, headers?: string){
 export function useLogin(){
     const router = useRouter();
 
-    return function() {
-        session.user = {
-            id: 1,
+    return async function() {
+        const response = await api("users/login", {
+            "email": "marinhev1@newpaltz.edu",
+            "password": "password"
+        });
+
+        session.user = response.data.user;
+        if(!session.user){
+            addMessage("User not found", "danger");
+            return;
         }
+
+        session.user.token = response.data.token;
 
         router.push(session.redirectUrl ?? "/");
         session.redirectUrl = null;
