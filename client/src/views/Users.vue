@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useSession, login, useLogout } from '../model/session';
-import { getUsers } from '../model/users';
+import { getUsers, type User } from '../model/users';
 
-const users = getUsers();
-const user = ref(users);
+const users = ref<User[]>([]);
+
+getUsers().then((data) => {
+    users.value = data.data;
+})
 
 const session = useSession();
 const logout = useLogout();
@@ -32,7 +35,7 @@ function logout2() {
     <thead>
     <tr>
       <th><abbr title="image"></abbr></th>
-      <th> <abbr title="fisrtName">First Name</abbr></th>
+      <th> <abbr title="firstName">First Name</abbr></th>
       <th><abbr title="Lname">Last Name</abbr></th>
       <th><abbr title="emails">Emails</abbr></th>
       <th><abbr title="handle">Handle</abbr></th>
@@ -40,10 +43,12 @@ function logout2() {
       <th><abbr title="edit/remove"></abbr></th>
     </tr>
   </thead>
-  <tbody>
-     <tr v-for="user in users" :key="user.id">
+  <tbody v-for="user in users" :key="user.id">
+     <tr>
        <th>
-         <img :src="user.photo" alt="">
+        <figure>
+            <img :src="user.photo">
+        </figure>
         </th>
       <td>{{ user.firstName }}</td>
       <td>{{ user.lastName }}</td>

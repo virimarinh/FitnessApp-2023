@@ -3,13 +3,16 @@ import { ref } from 'vue';
 import Modal from '@/components/Modal.vue';
 import img from '@/assets/adminPicture1.jpg'
 import { modalActive, toggleModal, closeModal } from '@/model/modal';
-import { getExercises } from '@/model/exercise';
+import { getExercises, type Exercise } from '@/model/exercise';
 import { useSession } from '@/model/session';
 
 
 const session = useSession();
+const exercises = ref<Exercise[]>([]);
+getExercises().then((data) => {
+    exercises.value = data.data;
+})
 
-const exercises = getExercises();
 
 // function getUserExercises() {
 //     if (session.user == getExercisesId(session)) {

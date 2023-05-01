@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useSession, login, useLogout } from '@/model/session';
-import { getUsers } from '../model/users';
+import { getUsers, type User } from '../model/users';
 
-const users = getUsers();
+const users = ref<User[]>([]);
+
+getUsers().then((data) => {
+    users.value = data.data;
+})
 
 const menuActive = ref(false);
 
