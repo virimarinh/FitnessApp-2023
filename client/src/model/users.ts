@@ -11,27 +11,25 @@ export interface User {
     password: string;
     handle: string;
     photo?: string | undefined;
+    token?: string
 }
 
 export function getUsers(): Promise<DataListEnvelope<User>> {
-     return api('users');
-
+  return api('users')
 }
 
-export function getUser(id: number): Promise<DataListEnvelope<User>> {
-    return api('users/' + id)
+export function getUser(id: string): Promise<DataEnvelope<User>> {
+  return api(`users/${id}`)
 }
 
-export function loginUser(email: string, password: string) {
-    return api('users/login', 
-    { 
-      "email": email,
-      "password": password 
-    },
-      'POST'
-      )
-  }
+export function updateUser(user: User): Promise<DataEnvelope<User>> {
+  return api('users/update', user, 'PATCH')
+}
 
-export function createUser(user: User): Promise<DataEnvelope<User>> {
-    return api('users/create', user, 'POST')
+export function createUser(user:User): Promise<DataEnvelope<User>>{
+  return api('users/add', user, 'POST')
+}
+
+export function deleteUser(user:User): Promise<DataEnvelope<User>>{
+  return api('users', user, 'DELETE')
 }

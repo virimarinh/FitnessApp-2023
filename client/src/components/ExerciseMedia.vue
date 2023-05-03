@@ -3,34 +3,28 @@ import { ref } from 'vue';
 import Modal from '@/components/Modal.vue';
 import img from '@/assets/adminPicture1.jpg'
 import { modalActive, toggleModal, closeModal } from '@/model/modal';
-import { getExercises, type Exercise } from '@/model/exercise';
+import { getExercises } from '@/model/exercise';
 import { useSession } from '@/model/session';
 
 
 const session = useSession();
-const exercises = ref<Exercise[]>([]);
-getExercises().then((data) => {
-    exercises.value = data.data;
-})
 
+const exercises = getExercises();
 
 // function getUserExercises() {
 //     if (session.user == getExercisesId(session)) {
 
 //     }
 // }
-// const userId = session.user?.id;
+const userId = session.user?.id;
 
 </script>
 <template>
     <div class="container">
         <h1 class="title">My Activity</h1>
         <div class="columns">
-            <div class="column is-half is-offset-one-quarter">
-                <Modal :modalActive="modalActive"></Modal>
-                <button @click="toggleModal" class="button is-danger is-fullwidth">Add Workout</button>
-                <br>
-                <div class="box" v-for="exercise in exercises" :key="exercise.userId" >
+            <div class="column">
+                <div class="box" v-for="exercise in exercises" :key="exercise.userId">
                 <!-- if(exercise.userId === userId)" > -->
                     <article class="media">
                         <div class="media-left">
