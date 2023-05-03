@@ -1,7 +1,5 @@
 <script setup lang="ts">
-    import { ref } from 'vue';
     import { useSession, useLogin, useLogout } from '@/model/session';
-    import { getUsers, type User } from '@/model/users'
 
     const session = useSession();
     const logout = useLogout();
@@ -13,7 +11,7 @@
 
 <template>
     <div class="navbar-item" v-if="session.user">
-                Welcome, {{ session.user.firstName}}
+                Welcome, {{ session.user.photo }} {{ session.user.firstName}}
                 (<a @click="logout2()">logout</a>)
             </div>
             <div class="navbar-item" v-else>
