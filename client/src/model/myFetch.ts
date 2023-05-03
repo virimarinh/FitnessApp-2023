@@ -1,4 +1,6 @@
-const API_URL = import.meta.env.VITE_API_URL ?? '/api/v1';
+/*  B"H
+*/
+const API_URL = import.meta.env.VITE_API_URL ?? '/api/v1/';
 
 export function rest(url: string, data?: any, method?: string, headers?: any){
     return fetch(url, {
@@ -9,14 +11,10 @@ export function rest(url: string, data?: any, method?: string, headers?: any){
         },
         body: data ? JSON.stringify(data) : undefined,
     })
-
-        .then(res => res.ok
-            ? res.json()
-            : res.json().then(x=> {
-                throw({
-                    ...x, message: x.error 
-                })
-            }));
+        .then(res => res.ok 
+            ? res.json() 
+            : res.json().then(x=> { throw({ ...x, message: x.error }) } )
+        );
 }
 
 export function api(url: string, data?: any, method?: string, headers?: any){
@@ -31,4 +29,17 @@ export type DataEnvelope<T> = {
 
 export type DataListEnvelope<T> = DataEnvelope<T[]> & {
     total: number,
+}
+
+export function loadScript(url: string, id: string){
+    return new Promise((resolve, reject) => {
+        if(document.getElementById(id)) return resolve(true);
+        
+        const script = document.createElement('script');
+        script.src = url;
+        script.id = id;
+        script.onload = () => resolve(true);
+        script.onerror = () => reject(false);
+        document.body.appendChild(script);
+    });
 }

@@ -1,4 +1,7 @@
-import { reactive  } from "vue";
+/*  B"H
+*/
+
+import { reactive } from "vue";
 import { useRouter } from "vue-router";
 import * as myFetch from "./myFetch";
 
@@ -11,6 +14,7 @@ const session = reactive({
     }[],
     redirectUrl: null as string | null,
 })
+
 interface User {
     id: number;
     firstName?: string;
@@ -32,52 +36,48 @@ export function api(url: string, data?: any, method?: string, headers?: any) {
 
     if(session.user?.token){
         headers = {
-            "Authorization": 'Bearer ${session.user.token}',
+            "Authorization": `Bearer ${session.user.token}`,
             ...headers,
         }
     }
-    
+
     return myFetch.api(url, data, method, headers)
-        .catch(err =>{
+        .catch(err => {
             console.error({err});
             session.messages.push({
-                msg: err.message ?? JSON.stringify(err),
+                msg: err.message  ?? JSON.stringify(err),
                 type: "danger",
             })
         })
         .finally(() => {
-            session.isLoading = false
+            session.isLoading = false;
         })
 }
 
-export function useLogin(){
+export function useLogin() {
     const router = useRouter();
 
     return async function() {
         const response = await api("users/login", {
-            "email": "marinhev1@newpaltz.edu",
+            "email": "marinhev1@mewpaltz.edu",
             "password": "password"
         });
 
         session.user = response.data.user;
-        if(!session.user){
+        if(!session.user) {
             addMessage("User not found", "danger");
             return;
         }
-
         session.user.token = response.data.token;
 
         router.push(session.redirectUrl ?? "/");
         session.redirectUrl = null;
     }
 }
-export function login(user: User) {
-    session.user = user;
-}
 
 export function useLogout() {
     const router = useRouter();
-
+    
     return function(){
         console.log({router});
         session.user = null;
@@ -85,6 +85,7 @@ export function useLogout() {
         router.push("/login");
     }
 }
+
 export function addMessage(msg: string, type: "success" | "danger" | "warning" | "info") {
     console.log({msg, type});
     session.messages.push({
