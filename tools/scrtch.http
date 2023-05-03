@@ -59,6 +59,6 @@ POST http://localhost:{{port}}/api/v1/users/login
 Content-Type: application/json
 
 {
-  "email": "marinherv1@newpaltz.edu",
-  "password": "password"
+  "email": "",
+  "password": ""
 }

@@ -19,9 +19,19 @@ export function getUsers(): Promise<DataListEnvelope<User>> {
 }
 
 export function getUser(id: number): Promise<DataListEnvelope<User>> {
-    return api('users/${id}')
+    return api('users/' + id)
 }
 
+export function loginUser(email: string, password: string) {
+    return api('users/login', 
+    { 
+      "email": email,
+      "password": password 
+    },
+      'POST'
+      )
+  }
+
 export function createUser(user: User): Promise<DataEnvelope<User>> {
-    return api('users', user)
+    return api('users/create', user, 'POST')
 }

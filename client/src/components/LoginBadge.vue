@@ -1,72 +1,43 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import { useSession, useLogin, useLogout } from '@/model/session';
-import { getUsers, type User } from '../model/users';
+    import { ref } from 'vue';
+    import { useSession, useLogin, useLogout } from '@/model/session';
+    import { getUsers, type User } from '@/model/users'
 
-const users = ref<User[]>([]);
+    const session = useSession();
+    const logout = useLogout();
 
-getUsers().then((data) => {
-    users.value = data.data;
-})
-
-const menuActive = ref(false);
-
-function toggleMenu(){
-  return menuActive.value =!menuActive.value;
-}
-const user = ref(users);
-const session = useSession();
-const login = useLogin();
-const logout = useLogout();
-
-function logout2() {
-    logout();
-}
-
+    function logout2(){
+        logout();
+    }
 </script>
 
 <template>
     <div class="navbar-item" v-if="session.user">
-        {{ session.user.firstName }} {{ session.user.lastName }}
-        (<a @click="logout2()">Logout</a>)
-    </div>
-    <div class="navbar-item" v-else>
-        <a class="button is-danger">
-            <span class="icon">
-                <i class="fas fa-user-plus"></i>
-            </span>
-            <strong>Sign up</strong>
-        </a>
-        <div class="dropdown is-active" @click="toggleMenu" >
-  <div class="dropdown-trigger">
-    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu2">
-      <span>Login</span>
-      <span class="icon is-small">
-        <i class="fas fa-angle-down" aria-hidden="true"></i>
-      </span>
-    </button>
-  </div>
-  <div class="dropdown-menu" id="dropdown-menu2" role="menu">
-    <div class="dropdown-content" v-for="user in users" :key="user.id">
-      <div class="dropdown-item" @click="login">
-        {{user.firstName}} {{ user.lastName }}
-      </div>
-    </div>
-    <hr class="dropdown-divider">
-      <a href="/login" class="dropdown-item">
-        Other Account
-      </a>
-  </div>
-</div>
-        <!-- <a class="button" @click="login">
-            <span>Login</span>
-            <span class="icon">
-                <i class="fas fa-angle-down" aria-hidden="true"></i>
-            </span>
-        </a> -->
-    </div>
+                Welcome, {{ session.user.firstName}}
+                (<a @click="logout2()">logout</a>)
+            </div>
+            <div class="navbar-item" v-else>
+                <a class="button is-primary" @click="$router.push('/login')">
+                    <span class="icon">
+                        <i class="fas fa-user"></i>
+                    </span>
+                    <strong>Login</strong>
+                </a>
+                <a class="button is-info">
+                    <span class="icon">
+                        <i class="fas fa-user-plus"></i>
+                    </span>
+                    <strong>Sign up</strong>
+                </a>
+            </div>
 </template>
 
-<style scoped>
 
+
+<style scoped>
+img{
+    width: 30px;
+    height: 40px;
+    border-radius: 50%;
+}
 </style>
