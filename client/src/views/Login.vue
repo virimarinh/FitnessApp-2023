@@ -1,5 +1,32 @@
 <script setup lang="ts">
-
+import { loadScript, rest } from '@/model/myFetch';
+async function googleLogin()
+{
+    await loadScript('https://accounts.google.com/gsi/client', 'google-login');
+    //await loadScript('https://apis.google.com/js/platform.js', 'gapi');
+    const client = google.accounts.oauth2.initTokenClient({
+          client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID,
+          scope: 'https://www.googleapis.com/auth/calendar.readonly \
+                  https://www.googleapis.com/auth/contacts.readonly',
+          callback: async (tokenResponse) => {
+            console.log(tokenResponse);
+            const me = await rest(
+                'https://people.googleapis.com/v1/people/me?personFields=names,emailAddresses',
+                null, undefined, {
+                    "Authorization": "Bearer " + tokenResponse.access_token
+                }
+                
+                );
+            console.log(me);
+            const calendar = await rest('https://www.googleapis.com/calendar/v3/calendars/primary/events',
+                null, undefined, {
+                    "Authorization": "Bearer " + tokenResponse.access_token
+                })
+            console.log(calendar);
+          },
+        });
+    client.requestAccessToken();
+}
 </script>
 
 <template>
@@ -8,50 +35,16 @@
             Login
         </h1>
         <h2 class="subtitle">
-            In the meantime you can login using the login menu on the top right.
+            If you got here then you are not logged in. <br>
+            To login just click the button on the top right corner.
         </h2>
         <p>
-            Logging in as Viri should give you access to the Activity pages 
-            as well as the admin pages (right now just users). 
-            Loggin in as other should give you only the Activity page
+            <button class="button is-primary" @click="googleLogin">
+                Login With Google
+            </button>
         </p>
-
-        <div class="column is-half is-offset-one-quarter">
-
-        <div class="field ">
-            <label class="label">Name</label>
-            <div class="control">
-                <input class="input" type="text" placeholder="Text input">
-            </div>
-        </div>
-        <div class="field">
-            <label class="label">Username</label>
-            <div class="control has-icons-left has-icons-right">
-                <input class="input" type="text" placeholder="username" value="">
-                <span class="icon is-small is-left">
-                    <i class="fas fa-user"></i>
-                </span>
-                <span class="icon is-small is-right">
-                    <i class="fas fa-check"></i>
-                </span>
-            </div>
-        </div>
-        <div class="field">
-            <label class="label">Email</label>
-                <div class="control has-icons-left has-icons-right">
-                    <input class="input" type="email" placeholder="Email" value="">
-                    <span class="icon is-small is-left">
-                        <i class="fas fa-envelope"></i>
-                    </span>
-                    <span class="icon is-small is-right">
-                        <i class="fas fa-exclamation-triangle"></i>
-                    </span>
-                </div>
-            </div>
-            <div class="field">
-            
-            </div>
-            
     </div>
-</div>
 </template>
+
+<style scoped>
+</style>

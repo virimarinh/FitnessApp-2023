@@ -3,7 +3,6 @@ import LoginVue from '@/views/Login.vue'
 import { useSession } from '@/model/session'
 import HomeView from '@/views/HomeView.vue'
 import ActivityView from '../views/ActivityView.vue'
-import Statistics from '../views/Statistics.vue'
 import FriendsActivity from '@/views/FriendsActivity.vue'
 import PeopleSearch from '@/views/PeopleSearch.vue'
 import User from '../views/Users.vue'
@@ -17,11 +16,6 @@ const router = createRouter({
     { path: '/friends-activity', name: 'friends-activity', component: FriendsActivity },
     { path: '/people-search', name: 'people-search', component: PeopleSearch },
     { path: '/users', name: 'users', component: User },
-    {
-      path: '/statistics',
-      name: 'statistics',
-      component: Statistics
-    }
   ]
 })
 

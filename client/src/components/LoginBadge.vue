@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { useSession, login, useLogout } from '@/model/session';
+import { useSession, useLogin, useLogout } from '@/model/session';
 import { getUsers, type User } from '../model/users';
 
 const users = ref<User[]>([]);
@@ -16,6 +16,7 @@ function toggleMenu(){
 }
 const user = ref(users);
 const session = useSession();
+const login = useLogin();
 const logout = useLogout();
 
 function logout2() {
@@ -47,7 +48,7 @@ function logout2() {
   </div>
   <div class="dropdown-menu" id="dropdown-menu2" role="menu">
     <div class="dropdown-content" v-for="user in users" :key="user.id">
-      <div class="dropdown-item" @click="login(user)">
+      <div class="dropdown-item" @click="login">
         {{user.firstName}} {{ user.lastName }}
       </div>
     </div>

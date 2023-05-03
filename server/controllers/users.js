@@ -4,25 +4,25 @@ const { requireLogin } = require('../middleware/authorization');
 const router = express.Router();
 
 router
-    .get('/', requireLogin(true), (req, res, next) => {
+    .get('/', requireLogin(true) , (req, res, next) => {
         model.getAll(+req.query.page, +req.query.pageSize)
             .then(list => {
                 const data = { data: list.items, total: list.total, isSuccess: true };
                 res.send(data)
-        }).catch(next);
-    })   
+            }).catch(next);
+    })
 
-    .get('/search/:q', requireLogin(true), (req, res, next ) => {
-        
+    .get('/search/:q', requireLogin(true) ,(req, res, next) => {
+
         model.search(req.params.q, +req.query.page, +req.query.pageSize)
             .then(list => {
                 const data = { data: list.items, total: list.total, isSuccess: true };
                 res.send(data)
             }).catch(next);
-
+        
     })
 
-    .get('/:id', requireLogin(true), (req, res, next) => {
+    .get('/:id', requireLogin() ,(req, res, next) => {
 
         model.getById(req.params.id)
             .then(x => {
@@ -32,37 +32,36 @@ router
 
     })
 
-    .post('/', requireLogin(true), (req, res, next ) => {
+    .post('/', requireLogin(true) ,(req, res, next) => {
 
         model.add(req.body)
             .then(x => {
-                const data = { data: exercise, isSuccess: true };
+                const data = { data: x, isSuccess: true };
                 res.send(data)
-            }).catch(next)
+            }).catch(next);
 
     })
 
-    .patch('/:id', requireLogin(true), (req, res, next ) => {
-        
+    .patch('/', requireLogin(true) ,(req, res, next) => {
+
         model.update(req.body)
             .then(x => {
-                const data = { data: exercise, isSuccess: true };
+                const data = { data: x, isSuccess: true };
                 res.send(data)
             }).catch(next);
 
     })
 
-    .delete('/:id', requireLogin(true), (req, res, next) => {
-        
+    .delete('/:id', requireLogin(true) ,(req, res, next) => {
+
         model.deleteItem(req.params.id)
             .then(x => {
-                const data = { data: exercise, isSuccess: true };
+                const data = { data: x, isSuccess: true };
                 res.send(data)
             }).catch(next);
-        
     })
 
-    .post('/seed', requireLogin(true), (req, res, next) => {
+    .post('/seed', requireLogin(true) ,(req, res, next) => {
         model.seed()
             .then(x => {
                 const data = { data: x, isSuccess: true };
@@ -70,12 +69,10 @@ router
             }).catch(next);
     })
 
-    .post('./login', requireLogin(true), (req, res, next) => {
+    .post('/login', (req, res, next) => {
         model.login(req.body.email, req.body.password)
             .then(x => {
-                const data = {
-                    data: x, isSuccess: true
-                };
+                const data = { data: x, isSuccess: true };
                 res.send(data)
             }).catch(next);
     })
@@ -83,19 +80,17 @@ router
     .post('/oAuthLogin', (req, res, next) => {
         model.oAuthLogin(req.body.provider, req.body.accessToken)
             .then(x => {
-                const data = {
-                    data: x, isSuccess: true
-                };
+                const data = { data: x, isSuccess: true };
                 res.send(data)
             }).catch(next);
     })
 
-    module.exports = router;
+module.exports = router;
 
-    /*  Ways to pass information to the server:
+/*  Ways to pass information to the server:
     1. Query String Parameters
     2. Route Parameters
     3. Request Body
     4. Request Headers
     5. Cookies
-    */
+*/

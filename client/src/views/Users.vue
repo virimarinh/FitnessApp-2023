@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { useSession, login, useLogout } from '../model/session';
-import { getUsers, type User } from '../model/users';
+import { useSession, useLogin, useLogout } from '../model/session';
+import { getUsers, type User } from '@/model/users';
 
 const users = ref<User[]>([]);
-
 getUsers().then((data) => {
     users.value = data.data;
 })
 
 const session = useSession();
+const login = useLogin();
 const logout = useLogout();
 
 function logout2() {
