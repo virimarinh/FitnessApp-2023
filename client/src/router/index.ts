@@ -11,7 +11,7 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     { path: '/home', name: 'home', component: HomeView},
-    { path: '/activity', name: 'activity', component: ActivityView},
+    { path: '/activity', name: 'activity', component: ActivityView, beforeEnter: secureRoute},
     { path: '/login', name: 'login', component: LoginVue },
     { path: '/friends-activity', name: 'friends-activity', component: FriendsActivity },
     { path: '/people-search', name: 'people-search', component: PeopleSearch },
@@ -21,11 +21,14 @@ const router = createRouter({
 
 export default router
 
-function secureRouter(to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) {
+function secureRoute (to : RouteLocationNormalized, from : RouteLocationNormalized, next : NavigationGuardNext ) {
   const session = useSession();
   if (session.user) {
-    next()
-  } else {
-    next('/next')
+      next()
+  } else { 
+      if(!session.redirectUrl && to.path != '/login') {
+          session.redirectUrl = to.fullPath;
+      }
+      next('/login')
   }
 }

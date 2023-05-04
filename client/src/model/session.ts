@@ -1,7 +1,7 @@
 /*  B"H
 */
 import { ref } from 'vue'
-import { computed, reactive } from "vue";
+import { reactive } from "vue";
 import { useRouter } from "vue-router";
 import * as myFetch from "./myFetch";
 import type { User } from '@/model/users';

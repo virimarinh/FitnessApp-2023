@@ -1,5 +1,4 @@
 import { ref } from 'vue';
-import Modal from '@/components/Modal.vue';
 
 
 export const modalActive = ref(false);
