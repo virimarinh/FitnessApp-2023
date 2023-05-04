@@ -7,24 +7,20 @@ import router from '@/router';
 import { ref } from 'vue';
 import { useRoute } from 'vue-router';
 
-const session = useSession();;
-const props = defineProps<{
-        title?: string;
-        isOpen: boolean;
-    }>();
+const user = ref<User>({} as User)
+let error = ref(false);
+function newUser() {
+    createUser(user.value).then((data) => {
+      addMessage('User created', 'success')
+    })
+  }
+  router.push('/login')
+  
+function cancel() {
+  addMessage("Canceled User", 'info')
+  router.push('/login')
+}
 
-    const emit = defineEmits<{
-        (e: 'update:isOpen', value: boolean): void;
-    }>();
-
-
-const email = ref("");
-const password = ref("");
-const confirmPassword = ref("");
-const firstName = ref("");
-const lastName = ref("");   
-const handle = ref("");
-const errMsg = ref("");
 
 
 </script>
@@ -87,12 +83,12 @@ const errMsg = ref("");
         </span>
       </div>
     </div>
-                </form>
+          </form>
             </section>
             <footer class="modal-card-foot">
                 <!-- @click="saveWorkout -->
-                <button class="button is-success">Save changes</button>
-                <button @click="closeModal" class="button">Cancel</button>
+                <button @click="newUser()" class="button is-success">Save changes</button>
+                <button @click="cancel()" class="button">Cancel</button>
             </footer>
         </div>
 </div>

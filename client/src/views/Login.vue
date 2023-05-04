@@ -1,18 +1,54 @@
 <script setup lang="ts">
 import { modalActive, toggleModal, closeModal } from '@/model/modal';
-import { useLogin, useSession } from '@/model/session'
-import { reactive } from 'vue'
-import { useRouter } from 'vue-router'
+import { addMessage, useLogin, useSession } from '@/model/session'
+import { reactive, ref } from 'vue'
+import { useRoute } from 'vue-router'
 import Register from '@/components/SignupModal.vue'
+import { defineComponent } from 'vue';
+import { createUser, getUser, type User } from '@/model/users';
+import router from '@/router';
+import { loadScript, rest } from '@/model/myFetch';
 
-const router = useRouter()
-const session = useSession()
+const session = useSession();
+const route = useRoute();
 const user = reactive({
   email: '' as string,
   password: '' as string
 })
 
 const login = useLogin()
+
+async function googleLogin(){
+  await loadScript('https://accounts.google.com/gsi/client', 'google-login');
+
+  const client = google.accounts.oauth2.initTokenClient({
+    client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID,
+          scope: 'https://www.googleapis.com/auth/calendar.readonly \
+                  https://www.googleapis.com/auth/contacts.readonly',
+          callback: async (tokenResponse) => {
+            console.log(tokenResponse);
+
+            const me = await rest(
+                'https://people.googleapis.com/v1/people/me?personFields=names,emailAddresses',
+                null, undefined, {
+                    "Authorization": "Bearer " + tokenResponse.access_token
+                }
+                
+                );
+            console.log(me);
+
+            const calendar = await rest('https://www.googleapis.com/calendar/v3/calendars/primary/events',
+                null, undefined, {
+                    "Authorization": "Bearer " + tokenResponse.access_token
+                })
+
+            console.log(calendar);
+        },
+  });
+  client.requestAccessToken();
+}
+
+
 </script>
 
 <template>
@@ -49,6 +85,11 @@ const login = useLogin()
       <p class="control">
         <Register :isOpen="modalActive"></Register>
           <button @click="toggleModal" class="button is-danger is-fwidth">Sign Up</button>
+      </p>
+      <p>
+        <button @click="googleLogin" class="button is-info is-light">
+            Login With Google
+        </button>
       </p>
     </div>
     </div>
