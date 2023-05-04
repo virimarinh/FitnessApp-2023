@@ -1,7 +1,9 @@
 <script setup lang="ts">
+import { modalActive, toggleModal, closeModal } from '@/model/modal';
 import { useLogin, useSession } from '@/model/session'
 import { reactive } from 'vue'
 import { useRouter } from 'vue-router'
+import Register from '@/components/SignupModal.vue'
 
 const router = useRouter()
 const session = useSession()
@@ -45,7 +47,8 @@ const login = useLogin()
         <button class="button" @click="login(user)">Login</button>
       </p>
       <p class="control">
-        <button class="button">Sign Up</button>
+        <Register :modalActive="modalActive"></Register>
+          <button @click="toggleModal" class="button is-danger is-fullwidth">Sign Up</button>
       </p>
     </div>
     </div>
