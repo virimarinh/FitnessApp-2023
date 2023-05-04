@@ -32,7 +32,8 @@ getExercises().then((data) => {
                 <Modal :modalActive="modalActive"></Modal>
                 <button @click="toggleModal" class="button is-danger is-fullwidth">Add Workout</button>
                 <br>
-                <div class="box" v-for="exercise in exercises" :key="exercise.userId" >
+                <div v-for="exercise in exercises" :key="exercise.userId">
+                <div class="box" v-if="exercise.handle == session.user?.handle">
                 <!-- if(exercise.userId === userId)" > -->
                     <article class="media">
                         <div class="media-left">
@@ -93,6 +94,7 @@ getExercises().then((data) => {
                         </div>
                     </article>
                 </div>
+            </div>
             </div>
         </div>
     </div>

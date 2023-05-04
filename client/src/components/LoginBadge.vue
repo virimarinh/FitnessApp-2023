@@ -11,7 +11,7 @@
 
 <template>
     <div class="navbar-item" v-if="session.user">
-                Welcome, {{ session.user.photo }} {{ session.user.firstName}}
+        <img :src="session.user?.photo">  Welcome, {{ session.user.firstName}}
                 (<a @click="logout2()">logout</a>)
             </div>
             <div class="navbar-item" v-else>
