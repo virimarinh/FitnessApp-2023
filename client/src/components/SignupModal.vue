@@ -1,11 +1,21 @@
 <script setup lang="ts">
 
 import {modalActive, closeModal} from '@/model/modal';
-import { addMessage } from '@/model/session';
+import { addMessage, useSession } from '@/model/session';
 import { createUser, type User } from '@/model/users';
 import router from '@/router';
 import { ref } from 'vue';
 import { useRoute } from 'vue-router';
+
+const session = useSession();;
+const props = defineProps<{
+        title?: string;
+        isOpen: boolean;
+    }>();
+
+    const emit = defineEmits<{
+        (e: 'update:isOpen', value: boolean): void;
+    }>();
 
 
 const email = ref("");
