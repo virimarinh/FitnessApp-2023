@@ -61,6 +61,6 @@ const login = useLogin()
 <style scoped>
 .box{
   background: pink;
-  margin-top: 50%;
+  margin-top: 25%;
 }
 </style>

@@ -15,9 +15,9 @@
                 (<a @click="logout2()">logout</a>)
             </div>
             <div class="navbar-item" v-else>
-                <a class="button is-primary" @click="$router.push('/login')">
+                <a class="button is-warning is-light" @click="$router.push('/login')">
                     <span class="icon">
-                        <i class="fas fa-user"></i>
+                        <i class="fas fa-user "></i>
                     </span>
                     <strong>Login</strong>
                 </a>

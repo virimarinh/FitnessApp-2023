@@ -1,7 +1,15 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
 import LoginBadge from './LoginBadge.vue';
-   
+import { ref } from 'vue';
+
+const isMenuActive = ref(false);
+    const isCartActive = ref(false);
+
+    function toggleMenu() {
+        isMenuActive.value = !isMenuActive.value;
+        console.log({ isMenuActive });
+    }
 </script>
 
 <template>
@@ -13,14 +21,14 @@ import LoginBadge from './LoginBadge.vue';
                 <i class="fa-solid  fa-person-walking-arrow-right fa-bounce" style="color: black;"></i>
             </RouterLink>
           </a>
-          <div class="navbar-burger" >
+          <div class="navbar-burger" :class="{ 'is-active': isMenuActive }" @click="toggleMenu" >
             <span></span>
             <span></span>
             <span></span>
           </div>
         </div>
       
-        <div class="navbar-menu">
+        <div class="navbar-menu" :class="{ 'is-active': isMenuActive }">
           <div class="navbar-start">
 
             <RouterLink to="/activity" class="navbar-item">
@@ -58,7 +66,7 @@ import LoginBadge from './LoginBadge.vue';
             <div class="navbar-item">
               <div class="field is-grouped">
                 <p class="control">
-                  <a class="bd-tw-button button" data-social-network="Twitter" data-social-action="tweet" data-social-target="https://bulma.io" target="_blank" href="https://twitter.com/intent/tweet?text=Bulma: a modern CSS framework based on Flexbox&amp;hashtags=bulmaio&amp;url=https://bulma.io&amp;via=jgthms">
+                  <a class="bd-tw-button button is-info is-light" data-social-network="Twitter" data-social-action="tweet" data-social-target="https://bulma.io" target="_blank" href="https://twitter.com/intent/tweet?text=Bulma: a modern CSS framework based on Flexbox&amp;hashtags=bulmaio&amp;url=https://bulma.io&amp;via=jgthms">
                     <span class="icon">
                       <i class="fab fa-twitter"></i>
                     </span>
