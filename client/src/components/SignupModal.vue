@@ -7,22 +7,16 @@ import router from '@/router';
 import { ref } from 'vue';
 import { useRoute } from 'vue-router';
 
-let error = ref(false);
-const user = ref<User>({} as User)
-const route = useRoute();
 
-function save(){
-    createUser(user.value).then((data) => {
-      if(user.value){
-        addMessage('User created', 'success')
-        alert("User created")
-        router.push('/login')
-      } else {
-        addMessage('User already exists', 'danger')
-        error.value = true;
-      }
-    })
-}
+const email = ref("");
+const password = ref("");
+const confirmPassword = ref("");
+const firstName = ref("");
+const lastName = ref("");   
+const handle = ref("");
+const errMsg = ref("");
+
+
 </script>
 
 <template>
@@ -41,7 +35,7 @@ function save(){
           <div class="field">
             <label for="" class="label">First Name</label>
                 <div class="control has-icons-left">
-                    <input class="input" type="text" placeholder="First Name" v-model="user.firstName"/>
+                    <input class="input" type="text" placeholder="First Name" />
                     <span class="icon is-small is-left">
                         <i class="fa-solid fa-user" style="color: #a3005f;"></i>
                     </span>
@@ -50,7 +44,7 @@ function save(){
             <div class="field">
             <label for="" class="label">Last Name</label>
                 <div class="control has-icons-left">
-                    <input class="input" type="text" placeholder="Last Name" v-model="user.lastName" />
+                    <input class="input" type="text" placeholder="Last Name" />
                     <span class="icon is-small is-left">
                         <i class="fa-solid fa-user" style="color: #a3005f;"></i>
                     </span>
@@ -59,7 +53,7 @@ function save(){
           <div class="field">
             <label for="" class="label">Email</label>
           <div class="control has-icons-left">
-            <input class="input" type="text" placeholder="Email" v-model="user.email" />
+            <input class="input" type="text" placeholder="Email"  />
           <span class="icon is-small is-left">
             <i class="fa-solid fa-envelope" style="color: #a3005f;"></i>
           </span>
@@ -68,7 +62,7 @@ function save(){
     <div class="field">
       <label for="" class="label">Password</label>
       <div class="control has-icons-left">
-        <input class="input" type="password" placeholder="Password" v-model="user.password" />
+        <input class="input" type="password" placeholder="Password"  />
         <span class="icon is-small is-left">
           <i class="fas fa-key" style="color: #a3005f;"></i>
         </span>
@@ -77,7 +71,7 @@ function save(){
     <div class="field">
     <label for="" class="label">Username</label>
       <div class="control has-icons-left">
-        <input class="input" type="text" placeholder="Username" v-model="user.handle" />
+        <input class="input" type="text" placeholder="Username"/>
         <span class="icon is-small is-left">
           <i class="fas fa-key" style="color: #a3005f;"></i>
         </span>

@@ -6,6 +6,7 @@ import { getExercises, type Exercise } from '@/model/exercise';
 import { useSession } from '@/model/session';
 import Users from './Users.vue';
 
+
 const exercises = ref<Exercise[]>([]);
 getExercises().then((data) => {
     exercises.value = data.data;
@@ -30,7 +31,6 @@ getExercises().then((data) => {
                             <div class="media-content">
                                 <div class="content">
                                     <p>
-                                        <strong>{{ exercise.userName }} </strong> 
                                         <small> {{ exercise.handle }}</small> 
                                         <small> {{exercise.date}}</small>
                                         <br>
