@@ -39,8 +39,7 @@ some-other-headerz: with ,y very own personal information
 }
 
 ###
-DELETE http://localhost:{{port}}/api/v1/exercises/64418de0f09282c0f7970ba7
-
+DELETE http://localhost:{{port}}/api/v1/exercises/644dca6c68977b0d928be539
 ###
 GET  http://localhost:{{port}}/api/v1/exercises/search/cardio
 
@@ -53,6 +52,13 @@ POST http://localhost:{{port}}/api/v1/users/seed
 
 ###
 GET http://localhost:{{port}}/api/v1/users
+Content-Type: application/json
+
+###
+GET http://localhost:{{port}}/api/v1/users
+
+###
+GET http://localhost:{{port}}/api/v1/exercises
 
 ###
 # @name login
