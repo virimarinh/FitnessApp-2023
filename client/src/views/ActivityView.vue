@@ -29,8 +29,8 @@ getExercises().then((data) => {
         <h1 class="title">My Activity</h1>
         <div class="columns">
             <div class="column is-half is-offset-one-quarter">
-                <Modal :modalActive="modalActive"></Modal>
-                <button @click="toggleModal" class="button is-danger is-fullwidth">Add Workout</button>
+                <Modal :isOpen="modalActive"></Modal>
+                <button @click="toggleModal" class="button is-danger is-fwidth">Add Workout</button>
                 <br>
                 <div v-for="exercise in exercises" :key="exercise.userId">
                 <div class="box" v-if="exercise.handle == session.user?.handle">
@@ -63,7 +63,7 @@ getExercises().then((data) => {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="columm">
+                                <div class="column">
                                     <Figure>
                                          <img :src="exercise.picture" alt="" style="max-height: 100%;">
                                     </Figure>

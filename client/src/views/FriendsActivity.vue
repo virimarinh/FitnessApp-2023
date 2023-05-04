@@ -18,8 +18,8 @@ getExercises().then((data) => {
         <h1 class="title">Friends Activity</h1>
         <div class="columns">
             <div class="column is-half is-offset-one-quarter">
-                <Modal :modalActive="modalActive"></Modal>
-                <button @click="toggleModal" class="button is-danger is-fullwidth">Add Workout</button>
+                <Modal :isOpen="modalActive"></Modal>
+                <button @click="toggleModal" class="button is-danger is-fwidth">Add Workout</button>
                 <br>
                     <div class="box" v-for= "exercise in exercises" >
                         <article class="media">
@@ -48,7 +48,7 @@ getExercises().then((data) => {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="columm">
+                                <div class="column">
                                     <Figure>
                                          <img :src="exercise.picture" alt="" style="max-height: 100%;">
                                     </Figure>

@@ -1,6 +1,19 @@
 <script setup lang="ts">
 
 import {modalActive, closeModal} from '@/model/modal';
+import { useSession } from '@/model/session';
+import { createExercise, getExercises } from '@/model/exercise';
+import { ref } from 'vue';
+
+const session = useSession();
+const props = defineProps<{
+        title?: string;
+        isOpen: boolean;
+    }>();
+
+    const emit = defineEmits<{
+        (e: 'update:isOpen', value: boolean): void;
+    }>();
  
 </script>
 
@@ -17,7 +30,7 @@ import {modalActive, closeModal} from '@/model/modal';
                     <div class="field">
                         <label for="name">Name</label>
                         <div class="control">
-                            <input id="workout-name" type="text" required class="input">
+                            <input id="workout-name" type="text" required class="input" placeholder="Name of Your Workout">
                         </div>
                     </div>
                     <div class="field">
@@ -44,7 +57,7 @@ import {modalActive, closeModal} from '@/model/modal';
                             <input id="picture" type="text" class="input">
                         </div>
                     </div>
-                    <div class="select is-fullwidth">
+                    <div class="select is-fwidth">
                         <label for="workout-type">Type</label>
                         <select id="workout-type" required class="form-control">
                             <option value="select Workout">Select Workout</option>

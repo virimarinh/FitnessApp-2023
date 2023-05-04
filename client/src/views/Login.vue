@@ -47,8 +47,8 @@ const login = useLogin()
         <button class="button" @click="login(user)">Login</button>
       </p>
       <p class="control">
-        <Register :modalActive="modalActive"></Register>
-          <button @click="toggleModal" class="button is-danger is-fullwidth">Sign Up</button>
+        <Register :isOpen="modalActive"></Register>
+          <button @click="toggleModal" class="button is-danger is-fwidth">Sign Up</button>
       </p>
     </div>
     </div>
