@@ -10,10 +10,10 @@ import User from '../views/Users.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    { path: '/home', name: 'home', component: HomeView, beforeEnter: secureRouter },
-    { path: '/activity', name: 'activity', component: ActivityView, beforeEnter: secureRouter },
-    { path: '/', name: 'login', component: LoginVue },
-    { path: '/friends-activity', name: 'friends-activity', component: FriendsActivity, beforeEnter: secureRouter },
+    { path: '/home', name: 'home', component: HomeView},
+    { path: '/activity', name: 'activity', component: ActivityView},
+    { path: '/login', name: 'login', component: LoginVue },
+    { path: '/friends-activity', name: 'friends-activity', component: FriendsActivity },
     { path: '/people-search', name: 'people-search', component: PeopleSearch },
     { path: '/users', name: 'users', component: User },
   ]

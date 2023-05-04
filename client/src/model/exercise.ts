@@ -2,8 +2,8 @@ import type { DataEnvelope, DataListEnvelope } from "./myFetch";
 import { api } from "./session";
 
 export interface Exercise {
-    userId: number;
-    userName: string;
+    _id: string;
+    userId?: number;
     handle: string;
     name: string;
     date?: string;
@@ -23,5 +23,9 @@ export function getExercise(id: number): Promise<DataListEnvelope<Exercise>> {
 }
 
 export function createExercise(exercise: Exercise): Promise<DataEnvelope<Exercise>> {
-    return api('exercises', exercise)
+    return api('exercise/create', exercise,  "POST")
+}
+
+export function deleteExercise(exercise: Exercise): Promise<DataEnvelope<Exercise>>{
+    return api(`exercise/delete/${exercise._id}`, exercise, "DELETE")
 }
