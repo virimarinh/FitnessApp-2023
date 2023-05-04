@@ -2,7 +2,9 @@
 import { RouterLink } from 'vue-router';
 import LoginBadge from './LoginBadge.vue';
 import { ref } from 'vue';
+import { useSession } from '../model/session'
 
+const session = useSession();
 const isMenuActive = ref(false);
     const isCartActive = ref(false);
 
@@ -17,7 +19,7 @@ const isMenuActive = ref(false);
         <div class="container">
         <div class="navbar-brand">
           <a class="navbar-item" href="">
-            <RouterLink to="/"> 
+            <RouterLink to="/home"> 
                 <i class="fa-solid  fa-person-walking-arrow-right fa-bounce" style="color: black;"></i>
             </RouterLink>
           </a>
@@ -48,12 +50,12 @@ const isMenuActive = ref(false);
               People Search
             </RouterLink>
 
-            <div class="navbar-item has-dropdown is-hoverable">
+            <div class="navbar-item has-dropdown is-hoverable" v-if="session.user?.admin == true">
               <a class="navbar-link" href="">
                 Admin
               </a>
               <div class="navbar-dropdown">
-                <RouterLink to="/users" class="navbar-item">
+                <RouterLink class="navbar-item" to="/users" >
                   User
                 </RouterLink>
               </div>
