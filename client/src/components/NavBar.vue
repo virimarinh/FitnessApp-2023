@@ -19,7 +19,7 @@ const isMenuActive = ref(false);
         <div class="container">
         <div class="navbar-brand">
           <a class="navbar-item" href="">
-            <RouterLink to="/home"> 
+            <RouterLink to="/"> 
                 <i class="fa-solid  fa-person-walking-arrow-right fa-bounce" style="color: black;"></i>
             </RouterLink>
           </a>
