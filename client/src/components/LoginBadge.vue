@@ -21,7 +21,7 @@
                     </span>
                     <strong>Login</strong>
                 </a>
-                <a class="button is-info">
+                <a class="button is-info" @click="$router.push('/signup')" >
                     <span class="icon">
                         <i class="fas fa-user-plus"></i>
                     </span>

@@ -5,12 +5,12 @@ import LoginBadge from './LoginBadge.vue';
 </script>
 
 <template>
-    <nav class="navbar is-danger">
+    <nav class="navbar">
         <div class="container">
         <div class="navbar-brand">
           <a class="navbar-item" href="">
             <RouterLink to="/"> 
-              <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="22" height="22" />
+                <i class="fa-solid  fa-person-walking-arrow-right fa-bounce" style="color: black;"></i>
             </RouterLink>
           </a>
           <div class="navbar-burger" >
@@ -24,7 +24,7 @@ import LoginBadge from './LoginBadge.vue';
           <div class="navbar-start">
 
             <RouterLink to="/activity" class="navbar-item">
-              <i class="fa-solid fa-person-walking"></i>
+              <i class="fa-solid fa-person"></i>
                My Activity
             </RouterLink>
             <!-- <RouterLink to="/statistics" class="navbar-item">
@@ -77,4 +77,7 @@ import LoginBadge from './LoginBadge.vue';
 
 
 <style scoped>
+.navbar{ 
+  background-color: pink;
+}
 </style>

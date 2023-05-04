@@ -55,10 +55,10 @@ app
     })
 
 
-    console.log('1: About to start server')
+console.log('1: About to start server')
 
-    app.listen(port, () => 
-      console.log(`2: Server running at http://${hostname}:${port}/`)
-    );
-    
-    console.log('3: Asked server to start')
+app.listen(port, () => 
+  console.log(`2: Server running at http://${hostname}:${port}/`)
+);
+
+console.log('3: Asked server to start')

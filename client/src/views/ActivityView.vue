@@ -8,8 +8,10 @@ import { useSession } from '@/model/session';
 
 
 const session = useSession();
+
 const exercises = ref<Exercise[]>([]);
 getExercises().then((data) => {
+    console.log(exercises.value);
     exercises.value = data.data;
 })
 
