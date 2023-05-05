@@ -42,7 +42,7 @@ app
 
 // Catch All
 app.get('*', (req, res) => {
-    res.sendFile(path.join(_dirtname, '../client/dist/index.html'))
+    res.sendFile(path.join(_dirname, '../client/dist/index.html'))
 })
 
 // Error Handling
