@@ -13,7 +13,7 @@ const router = createRouter({
     { path: '/', name: 'home', component: HomeView},
     { path: '/activity', name: 'activity', component: ActivityView, beforeEnter: secureRoute},
     { path: '/login', name: 'login', component: LoginVue },
-    { path: '/friends-activity', name: 'friends-activity', component: FriendsActivity },
+    { path: '/friends-activity', name: 'friends-activity', component: FriendsActivity, beforeEnter: secureRoute},
     { path: '/people-search', name: 'people-search', component: PeopleSearch },
     { path: '/users', name: 'users', component: User },
   ]

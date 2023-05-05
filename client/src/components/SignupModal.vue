@@ -24,7 +24,7 @@ async function handleSubmit() {
       handle: userForm.handle
     }
 
-    const result = await createUser(userForm)
+    const result = await createUser(newUser)
 
     if (result.isSuccess) {
       console.log('New user created:', result.data)
