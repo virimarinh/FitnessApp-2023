@@ -35,7 +35,8 @@ export function updateUser(user: User): Promise<DataEnvelope<User>> {
 }
 
 export function createUser(user: NewUser): Promise<DataEnvelope<User>>{
-  return api('users/add', user, 'POST')
+  console.log({ user })
+  return api('users', user, 'POST')
 }
 
 export function deleteUser(user:User): Promise<DataEnvelope<User>>{

@@ -13,6 +13,18 @@ export interface Exercise {
     type: string 
 }
 
+interface NewExercise{
+    _id: string;
+    userId?: number;
+    handle: string;
+    name: string;
+    date?: string;
+    duration?: string;
+    location?: string;
+    picture?: string;
+    type: string 
+}
+
 
 export function getExercises(): Promise<DataListEnvelope<Exercise>> {
     return api('exercises')
