@@ -35,7 +35,7 @@ router
 
         model.add(req.body)
             .then(x => {
-                const data = { data: exercise, isSuccess: true };
+                const data = { data: x, isSuccess: true };
                 res.send(data)
             }).catch(next)
 
@@ -45,7 +45,7 @@ router
         
         model.update(req.body)
             .then(x => {
-                const data = { data: exercise, isSuccess: true };
+                const data = { data: x, isSuccess: true };
                 res.send(data)
             }).catch(next);
 
@@ -55,7 +55,7 @@ router
         
         model.deleteItem(req.params.id)
             .then(x => {
-                const data = { data: exercise, isSuccess: true };
+                const data = { data: x, isSuccess: true };
                 res.send(data)
             }).catch(next);
         

@@ -1,66 +1,52 @@
 <script setup lang="ts">
-
-import {modalActive, closeModal} from '@/model/modal';
+import { modalActive, closeModal } from '@/model/modal';
 import { useSession } from '@/model/session';
-import { createExercise, type Exercise } from '@/model/exercise';
-import { reactive, ref } from 'vue';
+import { createExercise } from '@/model/exercise';
+import type { NewExercise } from '@/model/exercise';
+import { reactive } from 'vue';
 
 const session = useSession();
 const props = defineProps<{
-        title?: string;
-        isOpen: boolean;
-    }>();
+  title?: string;
+  isOpen: boolean;
+}>();
 
-    const emit = defineEmits<{
-        (e: 'update:isOpen', value: boolean): void;
-    }>();
+const emit = defineEmits<{
+  (e: 'update:isOpen', value: boolean): void;
+}>();
 
 const exerciseForm = reactive({
-    userId: 0,
-    name: '',
-    date: '',
-    duration: '',
-    location: '',
-    picture: '',
-    type: '',
+  name: '',
+  date: '',
+  duration: '',
+  location: '',
+  picture: '',
+  type: '',
+  handle: session.user?.handle 
 })
 
+
 async function handleSubmit() {
-    try{
-        const newExercise: Exercise = {
-_id: '',
-userId: session.user?.id,
-name: exerciseForm.name,
-date: exerciseForm.date,
-duration: exerciseForm.duration,
-location: exerciseForm.location,
-picture: exerciseForm.picture,
-type: exerciseForm.type,
-handle: ''
-}
+  try {
+    const { handle, ...exerciseWithoutUserId } = exerciseForm;
+    const newExercise: NewExercise = {
+      ...exerciseWithoutUserId,
+      handle: session.user?.handle,
+    };
 
-    const result = await createExercise(newExercise)
+    const result = await createExercise(newExercise);
 
-    if (result.isSuccess){
-        console.log('New user created:', result.data)
-
-        // Reset the input fields and close the modal
-      exerciseForm.name = ''
-      exerciseForm.date = ''
-      exerciseForm.duration = ''
-      exerciseForm.location = ''
-      exerciseForm.picture = ''
-
-      closeModal()
+    if (result.isSuccess) {
+      console.log('New exercise created:', result.data);
+      closeModal();
     } else {
-      console.error('Failed to create user:', result.error)
+      console.error('Failed to create exercise:', result.error);
     }
   } catch (error) {
-    console.error('Error creating user:', error)
+    console.error('Error creating exercise:', error);
   }
 }
 
- 
 </script>
 
 <template>
