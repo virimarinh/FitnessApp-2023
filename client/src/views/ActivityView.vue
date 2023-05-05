@@ -15,14 +15,6 @@ getExercises().then((data) => {
     exercises.value = data.data;
 })
 
-
-// function getUserExercises() {
-//     if (session.user == getExercisesId(session)) {
-
-//     }
-// }
-// const userId = session.user?.id;
-
 </script>
 <template>
     <div class="container">
