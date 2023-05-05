@@ -1,28 +1,48 @@
 <script setup lang="ts">
 
 import {modalActive, closeModal} from '@/model/modal';
-import { addMessage, useSession } from '@/model/session';
-import { createUser, type User } from '@/model/users';
-import router from '@/router';
-import { ref } from 'vue';
-import { useRoute } from 'vue-router';
+import { reactive } from 'vue'
+import { createUser, type User } from '@/model/users'
 
-const user = ref<User>({} as User)
-let error = ref(false);
-function newUser() {
-    createUser(user.value).then((data) => {
-      addMessage('User created', 'success')
-    })
+const userForm = reactive({
+  firstName: '',
+  lastName: '',
+  email: '',
+  password: '',
+  handle: ''
+})
+
+async function handleSubmit() {
+  try {
+    const newUser: User = {
+      id: 0, 
+      firstName: userForm.firstName,
+      lastName: userForm.lastName,
+      admin: false,
+      email: userForm.email,
+      password: userForm.password,
+      handle: userForm.handle
+    }
+
+    const result = await createUser(newUser)
+
+    if (result.isSuccess) {
+      console.log('New user created:', result.data)
+
+      // Reset the input fields and close the modal
+      userForm.firstName = ''
+      userForm.lastName = ''
+      userForm.email = ''
+      userForm.password = ''
+      userForm.handle = ''
+      closeModal()
+    } else {
+      console.error('Failed to create user:', result.error)
+    }
+  } catch (error) {
+    console.error('Error creating user:', error)
   }
-  router.push('/login')
-  
-function cancel() {
-  addMessage("Canceled User", 'info')
-  router.push('/login')
 }
-
-
-
 </script>
 
 <template>
@@ -41,7 +61,7 @@ function cancel() {
           <div class="field">
             <label for="" class="label">First Name</label>
                 <div class="control has-icons-left">
-                    <input class="input" type="text" placeholder="First Name" />
+                  <input class="input" type="text" placeholder="First Name" v-model="userForm.firstName" />
                     <span class="icon is-small is-left">
                         <i class="fa-solid fa-user" style="color: #a3005f;"></i>
                     </span>
@@ -50,7 +70,7 @@ function cancel() {
             <div class="field">
             <label for="" class="label">Last Name</label>
                 <div class="control has-icons-left">
-                    <input class="input" type="text" placeholder="Last Name" />
+                    <input class="input" type="text" placeholder="Last Name" v-model="userForm.lastName"/>
                     <span class="icon is-small is-left">
                         <i class="fa-solid fa-user" style="color: #a3005f;"></i>
                     </span>
@@ -59,7 +79,7 @@ function cancel() {
           <div class="field">
             <label for="" class="label">Email</label>
           <div class="control has-icons-left">
-            <input class="input" type="text" placeholder="Email"  />
+            <input class="input" type="text" placeholder="Email" v-model="userForm.email" />
           <span class="icon is-small is-left">
             <i class="fa-solid fa-envelope" style="color: #a3005f;"></i>
           </span>
@@ -68,16 +88,16 @@ function cancel() {
     <div class="field">
       <label for="" class="label">Password</label>
       <div class="control has-icons-left">
-        <input class="input" type="password" placeholder="Password"  />
+        <input class="input" type="password" placeholder="Password" v-model="userForm.password" />
         <span class="icon is-small is-left">
           <i class="fas fa-key" style="color: #a3005f;"></i>
         </span>
       </div>
     </div>
     <div class="field">
-    <label for="" class="label">Username</label>
+    <label for="" class="label">Handle</label>
       <div class="control has-icons-left">
-        <input class="input" type="text" placeholder="Username"/>
+        <input class="input" type="text" placeholder="Username" v-model="userForm.handle"/>
         <span class="icon is-small is-left">
           <i class="fas fa-key" style="color: #a3005f;"></i>
         </span>
@@ -87,8 +107,8 @@ function cancel() {
             </section>
             <footer class="modal-card-foot">
                 <!-- @click="saveWorkout -->
-                <button @click="newUser()" class="button is-success">Save changes</button>
-                <button @click="cancel()" class="button">Cancel</button>
+                <button @click="handleSubmit" class="button is-success">Save changes</button>
+                <button @click="closeModal" class="button">Cancel</button>
             </footer>
         </div>
 </div>
@@ -96,6 +116,5 @@ function cancel() {
 </template>
 
 <style scoped>
+
 </style>
-<script>
-</script>

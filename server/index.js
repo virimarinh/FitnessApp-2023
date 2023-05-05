@@ -5,6 +5,8 @@ const exercises = require('./controllers/exercises')
 const users = require('./controllers/users')
 const { requireLogin, parseAuthorizationHeader } = require('./middleware/authorization')
 const app = express()
+const { MongoClient } = require('mongodb');
+const url = process.env.MONGO_URL;
 
 const hostname = '127.0.0.1';
 const port = process.env.PORT || 3000;
@@ -56,6 +58,35 @@ app
 
 
 console.log('1: About to start server')
+
+app.post('/api/v1/users/add', async (req, res) => {
+    try {
+      const { firstName, lastName, email, password, handle } = req.body;
+  
+      const client = await MongoClient.connect(url, { useUnifiedTopology: true });
+      const db = client.db('myDatabase');
+  
+      // Insert the user data into the "users" collection
+      const result = await db.collection('users').insertOne({
+        name: `${firstName} ${lastName}`,
+        email,
+        password,
+        handle,
+      });
+  
+      // Close the database connection
+      await client.close();
+
+      res.status(200).json({ message: 'User created successfully!' });
+  } catch (err) {
+    console.error(err);
+
+    // Add this line to print out the response that the server is sending back
+    console.log(res);
+
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
 
 app.listen(port, () => 
   console.log(`2: Server running at http://${hostname}:${port}/`)
