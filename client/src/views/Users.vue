@@ -5,9 +5,8 @@ import { getUsers, type User } from '@/model/users';
 
 const users = ref<User[]>([]);
 getUsers().then((data) => {
-    users.value = data.data;
-})
-
+    users.value = data;
+});
 const session = useSession();
 const login = useLogin();
 const logout = useLogout();

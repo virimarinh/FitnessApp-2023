@@ -22,6 +22,7 @@ const exerciseForm = reactive({
   location: '',
   picture: '',
   type: '',
+  tagUser: '',
   handle: session.user?.handle 
 })
 
@@ -101,6 +102,12 @@ async function handleSubmit() {
                         </select>
                     </div>
                 </form>
+                <div class="field">
+                  <label for="search">Tag Your Friend!</label>
+                  <div class="control">
+                    <input v-model="exerciseForm.tagUser" id="search" type="text" class="input" placeholder="Search for a friend">
+                  </div>
+                </div>
             </section>
             <footer class="modal-card-foot">
                 <!-- @click="saveWorkout -->

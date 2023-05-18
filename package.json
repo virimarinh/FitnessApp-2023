@@ -23,7 +23,9 @@
         "express": "^4.18.2",
         "googleapis": "^105.0.0",
         "jsonwebtoken": "^9.0.0",
-        "mongodb": "^5.2.0"
+        "mongodb": "^5.2.0",
+        "primevue": "^3.29.1",
+        "vue-autocomplete": "^0.0.2"
     },
     "devDependencies": {
         "nodemon": "^2.0.20"
